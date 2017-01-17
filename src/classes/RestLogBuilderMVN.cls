@@ -1,10 +1,10 @@
 /**
-* LogBuilderMVN.cls
+* RestLogBuilderMVN.cls
 * Created By: Florian Hoehn
-* Created On: October 26th
+* Created On: January 16th, 2017
 * Description: defines the log builder to easily build a log record and insert it
 **/
-public with sharing class LogBuilderMVN {
+public with sharing class RestLogBuilderMVN {
     /**
     * @description Constants used in the log builder
     */
@@ -21,46 +21,50 @@ public with sharing class LogBuilderMVN {
     /**
     * @description defines log record that will be inserted or logged out
     */
-    private Log_MVN__c log;
+    private Rest_Log_MVN__c log;
 
     /**
     * @description constructor which leverages the SObjectBuilder to initiate record
     */
-    public LogBuilderMVN() {
-        this.log = new Log_MVN__c();
+    public RestLogBuilderMVN() {
+        this.log = new Rest_Log_MVN__c();
     }
 
     /**
     * @description set endpoint
+    * @date January 16th, 2017
     * @param String endpoint
     */
-    public LogBuilderMVN withEndpoint(String endpoint) {
+    public RestLogBuilderMVN withEndpoint(String endpoint) {
         this.log.Endpoint_MVN__c = this.cleanUp(endpoint, 255);
         return this;
     }
 
     /**
     * @description set requestPayload
+    * @date January 16th, 2017
     * @param String requestPayload
     */
-    public LogBuilderMVN withRequestPayload(String requestPayload) {
+    public RestLogBuilderMVN withRequestPayload(String requestPayload) {
         this.log.Request_Payload_MVN__c = this.cleanUp(requestPayload, 131072);
         return this;
     }
 
     /**
     * @description set responsePayload
+    * @date January 16th, 2017
     * @param String responsePayload
     */
-    public LogBuilderMVN withResponsePayload(String responsePayload) {
+    public RestLogBuilderMVN withResponsePayload(String responsePayload) {
         this.log.Response_Payload_MVN__c = this.cleanUp(responsePayload, 131072);
         return this;
     }
     /**
     * @description set Message and StackTrace from exception
+    * @date January 16th, 2017
     * @param Exception ex
     */
-    public LogBuilderMVN withException(Exception ex) {
+    public RestLogBuilderMVN withException(Exception ex) {
         this.log.Message_MVN__c = this.cleanUp(ex.getMessage(), 131072);
         this.log.Stack_Trace_MVN__c = this.cleanUp(ex.getStackTraceString(), 131072);
         return this;
@@ -68,17 +72,19 @@ public with sharing class LogBuilderMVN {
 
     /**
     * @description set errorCode
+    * @date January 16th, 2017
     * @param String errorCode
     */
-    public LogBuilderMVN withErrorCode(String errorCode) {
+    public RestLogBuilderMVN withErrorCode(String errorCode) {
         this.log.Error_Code_MVN__c = this.cleanUp(errorCode, 255);
         return this;
     }
 
     /**
     * @description insert or log out log record depending on log level
+    * @date January 16th, 2017
     */
-    public LogBuilderMVN insertLog() {
+    public RestLogBuilderMVN insertLog() {
         this.log.Status_MVN__c = this.getStatus();
         if(this.logLevel == LOGLEVEL_ALL || this.log.Status_MVN__c == LOGLEVEL_FAILURE) {
             insert this.log;
@@ -90,14 +96,16 @@ public with sharing class LogBuilderMVN {
 
     /**
     * @description returns the log record
-    * @return Log_MVN__c log
+    * @date January 16th, 2017
+    * @return Rest_Log_MVN__c log
     */
-    public Log_MVN__c build() {
+    public Rest_Log_MVN__c build() {
         return this.log;
     }
     
     /**
     * @description returns the status depending if an errorCode is set or not
+    * @date January 16th, 2017
     * @return String status
     */
     private String getStatus() {
@@ -110,6 +118,7 @@ public with sharing class LogBuilderMVN {
     
     /**
     * @description returns a cleaned up string, not null and length cut
+    * @date January 16th, 2017
     * @param String stringToCleanUp
     * @param Integer stringMaxLength
     * @return String cleanedString

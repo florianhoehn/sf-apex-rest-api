@@ -52,7 +52,6 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Endpoint_MVN__c</fullName>
         <description>Holds the endpoint of the log</description>
@@ -138,7 +137,7 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>Log</label>
+    <label>REST Log</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -152,11 +151,11 @@
         <language>en_US</language>
     </listViews>
     <nameField>
-        <displayFormat>L-{00000}</displayFormat>
-        <label>Log Number</label>
+        <displayFormat>RL-{00000}</displayFormat>
+        <label>Rest Log Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Logs</pluralLabel>
+    <pluralLabel>Rest Logs</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

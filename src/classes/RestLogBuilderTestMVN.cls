@@ -1,14 +1,20 @@
 /**
+* RestLogBuilderTestMVN.cls
+* Created By: Florian Hoehn
+* Created On: January 16th, 2017
+* Description: tests RestLogBuilderMvn
+**/
+/**
 * @author Florian Hoehn
-* @date 08/12/2016
+* @date January 16th, 2017
 * @group ￼integration
 * @description ￼some description here
 */
 @isTest
-private class LogBuilderTestMVN {
+private class RestLogBuilderTestMVN {
     /**
     * @author Florian Hoehn
-    * @date 08/12/2016
+    * @date January 16th, 2017
     * @description tests successful log which does not get inserted as the log level is set to failure.
     */
     @isTest
@@ -18,13 +24,13 @@ private class LogBuilderTestMVN {
         String expectedResponsePayload = 'expected request payload';
 
         Test.startTest();
-            LogBuilderMVN logBuilder = new LogBuilderMVN();
+            RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
             logBuilder.logLevel = logBuilder.LOGLEVEL_FAILURE;
-            Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
-                                             .withRequestPayload(expectedRequestPayload)
-                                             .withResponsePayload(expectedResponsePayload)
-                                             .insertLog()
-                                             .build();
+            Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
+                                                  .withRequestPayload(expectedRequestPayload)
+                                                  .withResponsePayload(expectedResponsePayload)
+                                                  .insertLog()
+                                                  .build();
         Test.stopTest();
 
         System.assertEquals(null, actualLog.Id); // NOT INSERTED AS LOG LEVEL IS FAILURE ONLY
@@ -36,7 +42,7 @@ private class LogBuilderTestMVN {
     
     /**
     * @author Florian Hoehn
-    * @date 08/12/2016
+    * @date January 16th, 2017
     * @description tests successful log which does get inserted
     */
     @isTest
@@ -46,12 +52,12 @@ private class LogBuilderTestMVN {
         String expectedResponsePayload = 'expected request payload';
 
         Test.startTest();
-            LogBuilderMVN logBuilder = new LogBuilderMVN();
-            Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
-                                             .withRequestPayload(expectedRequestPayload)
-                                             .withResponsePayload(expectedResponsePayload)
-                                             .insertLog()
-                                             .build();
+            RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
+            Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
+                                                  .withRequestPayload(expectedRequestPayload)
+                                                  .withResponsePayload(expectedResponsePayload)
+                                                  .insertLog()
+                                                  .build();
         Test.stopTest();
 
         System.assertNotEquals(null, actualLog.Id);
@@ -63,7 +69,7 @@ private class LogBuilderTestMVN {
     
     /**
     * @author Florian Hoehn
-    * @date 08/12/2016
+    * @date January 16th, 2017
     * @description tests failure log which gets inserted
     */
     @isTest
@@ -76,14 +82,14 @@ private class LogBuilderTestMVN {
         JSONException expecedJsonEx = new JSONException(expectedExceptionText);
 
         Test.startTest();
-            LogBuilderMVN logBuilder = new LogBuilderMVN();
-            Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
-                                             .withRequestPayload(expectedRequestPayload)
-                                             .withResponsePayload(expectedResponsePayload)
-                                             .withErrorCode(expectedErrorCode)
-                                             .withException(expecedJsonEx)
-                                             .insertLog()
-                                             .build();
+            RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
+            Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
+                                                  .withRequestPayload(expectedRequestPayload)
+                                                  .withResponsePayload(expectedResponsePayload)
+                                                  .withErrorCode(expectedErrorCode)
+                                                  .withException(expecedJsonEx)
+                                                  .insertLog()
+                                                  .build();
         Test.stopTest();
 
         System.assertNotEquals(null, actualLog.Id);

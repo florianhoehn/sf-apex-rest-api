@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>LogBuilderMVN</members>
-        <members>LogBuilderTestMVN</members>
+        <members>RestCalloutMVN</members>
+        <members>RestCalloutTestMVN</members>
+        <members>RestLogBuilderMVN</members>
+        <members>RestLogBuilderTestMVN</members>
+        <members>RestResponseMVN</members>
+        <members>RestResponseMockMVN</members>
+        <members>RestResponseTestMVN</members>
+        <members>RestWrapperMVN</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>Log_MVN__c</members>
+        <members>Rest_Log_MVN__c</members>
         <name>CustomObject</name>
     </types>
     <version>38.0</version>
