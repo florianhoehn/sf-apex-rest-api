@@ -1,0 +1,97 @@
+/**
+* ExampleRatingCalloutMVN.cls
+* Created By: Florian Hoehn
+* Created On: January 18th, 2017
+* Description: defines the specific callout for the example integration to receive rating information
+*              defines calls for this callout from the process builder, batch jobs and an @future call
+**/
+public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
+    /**
+    * @description holds the study object which the callout is made from
+    */
+    private Account account;
+
+    /**
+    * @description constructor
+    * @param Account account
+    */
+    public ExampleRatingCalloutMVN(Account account) {
+        this.account = account;
+    }
+
+    /**
+    * @description send the study to the ePlan endpoint
+    */
+    public void sendAccountToRatingEngine() {
+        RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
+        String requestPayload, responsePayload, errorCode;
+        try {
+            ExampleAccountWrapperMVN wrapper = new ExampleAccountWrapperMVN(this.account);
+            this.setMethod('POST');
+            this.setEndpoint('/rating/engine');
+            requestPayload = wrapper.toJSON();
+            this.setBody(requestPayload);
+            responsePayload = this.call();
+            wrapper = (ExampleAccountWrapperMVN)System.JSON.deserialize(responsePayload, ExampleAccountWrapperMVN.class);
+            if(wrapper.success) {
+                this.account = (Account)wrapper.convert();
+                update this.account;
+            } else {
+                if(wrapper.errors != null) { // throw first error returned
+                    errorCode = wrapper.errors.get(0).errorCode;
+                    throw new System.CalloutException(wrapper.errors.get(0).errorCode + ' :: ' + wrapper.errors.get(0).message); 
+                } else {
+                    throw new System.CalloutException('Example Standard Error Message'); 
+                }
+            }
+        } catch(Exception e) {
+            logBuilder = logBuilder.withException(e)
+                                   .withErrorCode(errorCode);
+        } finally {
+            logBuilder.withEndpoint('ePlan')
+                      .withRequestPayload(requestPayload)
+                      .withResponsePayload(responsePayload)
+                      .insertLog();
+        }
+    }
+
+    /**
+    * @description callout batch studies called by @future and batch
+    * @param Set<Id> accountIds
+    */
+    public static void sendBatchOfAccounts(Set<Id> accountIds) {
+        for(Account account : [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+                                      (SELECT Id, Name, Amount, StageName FROM Opportunities)
+                                 FROM Account 
+                                WHERE Id IN :accountIds]) {
+            ExampleRatingCalloutMVN callout = new ExampleRatingCalloutMVN(account);
+            callout.sendAccountToRatingEngine();
+        }
+    }
+
+    /**
+    * @description method that can be called by a process builder - schedules future calls to do the example callout
+    *              splits the list into chunks of 100 to circumvent governer limits (turn the process off for data migrations)
+    * @param List<Id> accountIds
+    */
+    @InvocableMethod
+    public static void sendAccountsToRatingEngine(List<Id> accountIds) {
+        for(Integer chunkCounter = 0; chunkCounter <= accountIds.size()/100; chunkCounter++) {
+            Set<Id> accountIdsToSend = new Set<Id>();
+            Integer upperBound = (((chunkCounter*100)+100) > accountIds.size()) ? accountIds.size() : ((chunkCounter*100)+100);
+            for(Integer counter = (chunkCounter*100); counter < upperBound; counter++) {
+                accountIdsToSend.add(accountIds.get(counter));
+            }
+            futureSendAccounts(accountIdsToSend);
+        }
+    }
+
+    /**
+    * @description future method to do the actual callout
+    * @param Set<Id> accountIds
+    */
+    @future(callout=true)
+    public static void futureSendAccounts(Set<Id> accountIds) {
+        sendBatchOfAccounts(accountIds);
+    }
+}

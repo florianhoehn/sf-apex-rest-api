@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>ExampleAccountWrapperMVN</members>
+        <members>ExampleAccountWrapperTestMVN</members>
+        <members>ExampleOpportunityWrapperMVN</members>
+        <members>ExampleOpportunityWrapperTestMVN</members>
+        <members>ExampleRatingCalloutMVN</members>
         <members>RestCalloutMVN</members>
         <members>RestCalloutTestMVN</members>
         <members>RestLogBuilderMVN</members>
