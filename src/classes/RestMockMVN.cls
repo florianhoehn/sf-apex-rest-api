@@ -1,11 +1,11 @@
 /**
-* RestResponseMockMVN.cls
+* RestMockMVN.cls
 * Created By: Florian Hoehn
 * Created On: * January 17th, 2017
 * Description: create mocks for rest callouts
 **/
 @isTest
-public class RestResponseMockMVN implements HttpCalloutMock {
+public class RestMockMVN implements HttpCalloutMock {
     /**
     * @description status code returned 
     */
@@ -28,13 +28,12 @@ public class RestResponseMockMVN implements HttpCalloutMock {
 
     /**
     * @description construct rest response mock
-    * @date January 16th, 2017
     * @param Integer code
     * @param String status
     * @param String body
     * @param Map<String, String> responseHeaders
     */
-    public RestResponseMockMVN(Integer code, String status, String body, Map<String, String> responseHeaders) {
+    public RestMockMVN(Integer code, String status, String body, Map<String, String> responseHeaders) {
         this.code = code;
         this.status = status;
         this.body = body;
@@ -43,7 +42,6 @@ public class RestResponseMockMVN implements HttpCalloutMock {
 
     /**
     * @description responds to callout inside test method
-    * @date January 16th, 2017
     * @param HttpRequest request
     * @return HttpResponse response
     */
@@ -57,5 +55,4 @@ public class RestResponseMockMVN implements HttpCalloutMock {
         response.setStatus(this.status);
         return response;
     }
-
 }

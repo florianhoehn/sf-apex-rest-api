@@ -4,17 +4,9 @@
 * Created On: January 16th, 2017
 * Description: tests RestLogBuilderMvn
 **/
-/**
-* @author Florian Hoehn
-* @date January 16th, 2017
-* @group ￼integration
-* @description ￼some description here
-*/
 @isTest
 private class RestLogBuilderTestMVN {
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests successful log which does not get inserted as the log level is set to failure.
     */
     @isTest
@@ -41,8 +33,6 @@ private class RestLogBuilderTestMVN {
     }
     
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests successful log which does get inserted
     */
     @isTest
@@ -68,8 +58,6 @@ private class RestLogBuilderTestMVN {
     }
     
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests failure log which gets inserted
     */
     @isTest

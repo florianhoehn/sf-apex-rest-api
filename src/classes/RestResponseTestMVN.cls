@@ -7,8 +7,6 @@
 @isTest
 private class RestResponseTestMVN {
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests constructor
     */
     @isTest
@@ -24,8 +22,6 @@ private class RestResponseTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests constructor with object
     */
     @isTest
@@ -41,8 +37,6 @@ private class RestResponseTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests error wrapper constructor
     */
     @isTest
@@ -57,8 +51,6 @@ private class RestResponseTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 16th, 2017
     * @description tests error wrapper constructor with parameters
     */
     @isTest
@@ -76,8 +68,6 @@ private class RestResponseTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests to json inherited from RestWrapperMVN
     */
     @isTest
@@ -94,8 +84,6 @@ private class RestResponseTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests convert inherited from RestWrapperMVN
     */
     @isTest

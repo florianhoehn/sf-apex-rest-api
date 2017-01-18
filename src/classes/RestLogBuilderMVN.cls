@@ -32,7 +32,6 @@ public with sharing class RestLogBuilderMVN {
 
     /**
     * @description set endpoint
-    * @date January 16th, 2017
     * @param String endpoint
     */
     public RestLogBuilderMVN withEndpoint(String endpoint) {
@@ -42,7 +41,6 @@ public with sharing class RestLogBuilderMVN {
 
     /**
     * @description set requestPayload
-    * @date January 16th, 2017
     * @param String requestPayload
     */
     public RestLogBuilderMVN withRequestPayload(String requestPayload) {
@@ -52,16 +50,15 @@ public with sharing class RestLogBuilderMVN {
 
     /**
     * @description set responsePayload
-    * @date January 16th, 2017
     * @param String responsePayload
     */
     public RestLogBuilderMVN withResponsePayload(String responsePayload) {
         this.log.Response_Payload_MVN__c = this.cleanUp(responsePayload, 131072);
         return this;
     }
+
     /**
     * @description set Message and StackTrace from exception
-    * @date January 16th, 2017
     * @param Exception ex
     */
     public RestLogBuilderMVN withException(Exception ex) {
@@ -72,7 +69,6 @@ public with sharing class RestLogBuilderMVN {
 
     /**
     * @description set errorCode
-    * @date January 16th, 2017
     * @param String errorCode
     */
     public RestLogBuilderMVN withErrorCode(String errorCode) {
@@ -82,7 +78,6 @@ public with sharing class RestLogBuilderMVN {
 
     /**
     * @description insert or log out log record depending on log level
-    * @date January 16th, 2017
     */
     public RestLogBuilderMVN insertLog() {
         this.log.Status_MVN__c = this.getStatus();
@@ -96,7 +91,6 @@ public with sharing class RestLogBuilderMVN {
 
     /**
     * @description returns the log record
-    * @date January 16th, 2017
     * @return Rest_Log_MVN__c log
     */
     public Rest_Log_MVN__c build() {
@@ -105,7 +99,6 @@ public with sharing class RestLogBuilderMVN {
     
     /**
     * @description returns the status depending if an errorCode is set or not
-    * @date January 16th, 2017
     * @return String status
     */
     private String getStatus() {
@@ -118,7 +111,6 @@ public with sharing class RestLogBuilderMVN {
     
     /**
     * @description returns a cleaned up string, not null and length cut
-    * @date January 16th, 2017
     * @param String stringToCleanUp
     * @param Integer stringMaxLength
     * @return String cleanedString
@@ -126,5 +118,4 @@ public with sharing class RestLogBuilderMVN {
     private String cleanUp(String stringToCleanUp, Integer stringMaxLength) {
         return (stringToCleanUp != null && stringToCleanUp.length() > stringMaxLength ? stringToCleanUp.left(stringMaxLength) : stringToCleanUp);
     }
-
 }

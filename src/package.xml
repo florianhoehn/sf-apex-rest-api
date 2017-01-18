@@ -5,8 +5,8 @@
         <members>RestCalloutTestMVN</members>
         <members>RestLogBuilderMVN</members>
         <members>RestLogBuilderTestMVN</members>
+        <members>RestMockMVN</members>
         <members>RestResponseMVN</members>
-        <members>RestResponseMockMVN</members>
         <members>RestResponseTestMVN</members>
         <members>RestWrapperMVN</members>
         <name>ApexClass</name>

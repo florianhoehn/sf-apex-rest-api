@@ -24,7 +24,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description sets method
-    * @date January 17th, 2017
     * @param String method
     */
     @TestVisible protected void setMethod(String method) {
@@ -33,7 +32,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description sets endpoint
-    * @date January 17th, 2017
     * @param String endpoint
     */
     @TestVisible protected void setEndpoint(String endpoint) {
@@ -42,7 +40,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description sets endpoint
-    * @date January 17th, 2017
     * @param String namedCredential
     */
     @TestVisible protected void setNamedCredential(String namedCredential) {
@@ -51,7 +48,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description sets client certificate
-    * @date January 17th, 2017
     * @param String certificateName
     */
     @TestVisible protected void setClientCertificate(String certificateName) {
@@ -60,7 +56,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description sets timeout
-    * @date January 17th, 2017
     * @param Integer timeout
     */
     @TestVisible protected void setTimeout(Integer timeout) {
@@ -69,7 +64,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description sets JSON body
-    * @date January 17th, 2017
     * @param String requestBody
     */
     @TestVisible protected void setBody(String requestBody) {
@@ -78,7 +72,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description do the actual callout
-    * @date January 17th, 2017
     * @return String requestBody
     */
     @TestVisible protected String call() {
@@ -92,7 +85,6 @@ public with sharing virtual class RestCalloutMVN {
 
     /**
     * @description initialises the httpRequest with all default headers
-    * @date January 17th, 2017
     * we can move anything that is the same for all callouts in here i.e. endpoint, method, certificate, timeout, content-type
     */
     protected void createHttpRequest() {

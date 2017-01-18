@@ -7,8 +7,6 @@
 @isTest
 private class RestCalloutTestMVN {
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests httpRequest is initiated on constructing the RestCalloutMVN class
     */
     @isTest private static void it_should_InstantiateWithDefaultHeaders() {
@@ -21,8 +19,6 @@ private class RestCalloutTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests setting the method for the httpRequest
     */
     @isTest private static void it_should_SetTheMethod() {
@@ -37,8 +33,6 @@ private class RestCalloutTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests setting the endpoint for the httpRequest
     */
     @isTest private static void it_should_SetTheEndpoint() {
@@ -53,8 +47,6 @@ private class RestCalloutTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests setting the endpoint via named credential for the httpRequest
     */
     @isTest private static void it_should_SetTheEndpointViaNamedCredential() {
@@ -69,8 +61,6 @@ private class RestCalloutTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests setting the client certificate for the httpRequest
     */
     /* TODO: replace <certName> with an existing certificate in our org
@@ -87,8 +77,6 @@ private class RestCalloutTestMVN {
     }*/
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests setting the timeout for the httpRequest
     */
     @isTest private static void it_should_SetTheTimeOut() {
@@ -104,8 +92,6 @@ private class RestCalloutTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests setting the body for the httpRequest
     */
     @isTest private static void it_should_SetTheBody() {
@@ -121,14 +107,12 @@ private class RestCalloutTestMVN {
     }
     
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests making a successful callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedSuccess() {
         RestCalloutMVN actualRestCallout = new RestCalloutMVN();
         String expectedResponseBody = 'success body';
-        RestResponseMockMVN responseMock = new RestResponseMockMVN(
+        RestMockMVN responseMock = new RestMockMVN(
             200,
             'SUCCESS',
             expectedResponseBody,
@@ -144,15 +128,13 @@ private class RestCalloutTestMVN {
     }
 
     /**
-    * @author Florian Hoehn
-    * @date January 17th, 2017
     * @description tests making a failed callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedFailure() {
         RestCalloutMVN actualRestCallout = new RestCalloutMVN();
         Integer expectedResponseStatus = 400;
         String expectedResponseBody = 'failure body';
-        RestResponseMockMVN responseMock = new RestResponseMockMVN(
+        RestMockMVN responseMock = new RestMockMVN(
             expectedResponseStatus,
             'FAILURE',
             expectedResponseBody,
