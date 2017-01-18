@@ -17,7 +17,7 @@ private class RestLogBuilderTestMVN {
 
         Test.startTest();
             RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
-            logBuilder.logLevel = logBuilder.LOGLEVEL_FAILURE;
+            logBuilder.logLevel = RestLogBuilderMVN.LOGLEVEL_FAILURE;
             Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
                                                   .withRequestPayload(expectedRequestPayload)
                                                   .withResponsePayload(expectedResponsePayload)
@@ -29,7 +29,7 @@ private class RestLogBuilderTestMVN {
         System.assertEquals(expectedEndpoint, actualLog.Endpoint_MVN__c);
         System.assertEquals(expectedRequestPayload, actualLog.Request_Payload_MVN__c);
         System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
-        System.assertEquals(logBuilder.SUCCESS, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.SUCCESS, actualLog.Status_MVN__c);
     }
     
     /**
@@ -54,7 +54,7 @@ private class RestLogBuilderTestMVN {
         System.assertEquals(expectedEndpoint, actualLog.Endpoint_MVN__c);
         System.assertEquals(expectedRequestPayload, actualLog.Request_Payload_MVN__c);
         System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
-        System.assertEquals(logBuilder.SUCCESS, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.SUCCESS, actualLog.Status_MVN__c);
     }
     
     /**
@@ -87,6 +87,6 @@ private class RestLogBuilderTestMVN {
         System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
         System.assertEquals(expectedErrorCode, actualLog.Error_Code_MVN__c);
         System.assertEquals(expectedExceptionText, actualLog.Message_MVN__c);
-        System.assertEquals(logBuilder.FAILURE, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.FAILURE, actualLog.Status_MVN__c);
     }
 }

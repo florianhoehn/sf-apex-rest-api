@@ -17,6 +17,15 @@ public class ExampleAccountWrapperTestMVN {
             AnnualRevenue = 500000
         );
         insert testAccount;
+
+        Opportunity testOpportunity = new Opportunity(
+            AccountId = testAccount.Id,
+            Name = 'Test Opportunity',
+            StageName = 'Test StageName',
+            Amount = 100000,
+            CloseDate = System.today() + 1
+        );
+        insert testOpportunity;
     }
 
     /**
@@ -24,7 +33,10 @@ public class ExampleAccountWrapperTestMVN {
     */
     @isTest
     private static void it_should_MapAccountToWrapper() {
-        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating FROM Account LIMIT 1];
+        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+                                          (SELECT Id, Name, Amount, StageName FROM Opportunities)
+                                     FROM Account
+                                    LIMIT 1];
 
         Test.startTest();
             ExampleAccountWrapperMVN actualExampleAccountWrapper = new ExampleAccountWrapperMVN(expectedAccount);
@@ -73,5 +85,8 @@ public class ExampleAccountWrapperTestMVN {
             System.assertEquals(account.AnnualRevenue > ExampleAccountWrapperMVN.BIG_PLAYER_LINE, wrapper.isBigPlayer);
         }
         System.assertEquals(account.Rating, wrapper.accountRating);
+        for(Integer counter = 0; counter < account.Opportunities.size(); counter++) {
+            ExampleOpportunityWrapperTestMVN.assertOpportunityMappings(account.Opportunities.get(counter), wrapper.opportunities.get(counter));
+        }
     }
 }

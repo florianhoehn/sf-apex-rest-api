@@ -8,10 +8,10 @@ public with sharing class RestLogBuilderMVN {
     /**
     * @description Constants used in the log builder
     */
-    @TestVisible private final String LOGLEVEL_ALL = 'All';
-    @TestVisible private final String LOGLEVEL_FAILURE = 'Failure';
-    @TestVisible private final String SUCCESS = 'Success';
-    @TestVisible private final String FAILURE = 'Failure';
+    @TestVisible private static final String LOGLEVEL_ALL = 'All';
+    @TestVisible private static final String LOGLEVEL_FAILURE = 'Failure';
+    @TestVisible private static final String SUCCESS = 'Success';
+    @TestVisible private static final String FAILURE = 'Failure';
     
     /**
     * @description defines log level (create a setting for this)

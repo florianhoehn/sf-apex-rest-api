@@ -6,6 +6,7 @@
 *              defines calls for this callout from the process builder, batch jobs and an @future call
 **/
 public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
+    @TestVisible private static String EXCEPTION_TEXT = 'Example Standard Error Message'; 
     /**
     * @description holds the study object which the callout is made from
     */
@@ -37,11 +38,12 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
                 this.account = (Account)wrapper.convert();
                 update this.account;
             } else {
-                if(wrapper.errors != null) { // throw first error returned
+                if(wrapper.errors != null && !wrapper.errors.isEmpty()) { // throw first error returned
                     errorCode = wrapper.errors.get(0).errorCode;
-                    throw new System.CalloutException(wrapper.errors.get(0).errorCode + ' :: ' + wrapper.errors.get(0).message); 
+                    throw new System.CalloutException(wrapper.errors.get(0).message); 
                 } else {
-                    throw new System.CalloutException('Example Standard Error Message'); 
+                    errorCode = EXCEPTION_TEXT;
+                    throw new System.CalloutException(EXCEPTION_TEXT); 
                 }
             }
         } catch(Exception e) {

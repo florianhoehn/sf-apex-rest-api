@@ -6,6 +6,7 @@
         <members>ExampleOpportunityWrapperMVN</members>
         <members>ExampleOpportunityWrapperTestMVN</members>
         <members>ExampleRatingCalloutMVN</members>
+        <members>ExampleRatingCalloutTestMVN</members>
         <members>RestCalloutMVN</members>
         <members>RestCalloutTestMVN</members>
         <members>RestLogBuilderMVN</members>
