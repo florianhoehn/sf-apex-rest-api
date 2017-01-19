@@ -114,7 +114,7 @@ private class RestCalloutTestMVN {
         String expectedResponseBody = 'success body';
         RestMockMVN responseMock = new RestMockMVN(
             200,
-            'SUCCESS',
+            RestLogBuilderMVN.STATUS_SUCCESS,
             expectedResponseBody,
             new Map<String, String>()
         );
@@ -136,7 +136,7 @@ private class RestCalloutTestMVN {
         String expectedResponseBody = 'failure body';
         RestMockMVN responseMock = new RestMockMVN(
             expectedResponseStatus,
-            'FAILURE',
+            RestLogBuilderMVN.STATUS_FAILURE,
             expectedResponseBody,
             new Map<String, String>()
         );

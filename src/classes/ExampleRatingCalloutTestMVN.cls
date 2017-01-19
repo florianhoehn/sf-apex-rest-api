@@ -6,7 +6,7 @@
 **/
 @isTest
 private class ExampleRatingCalloutTestMVN {
-    private static String expectedResponseBodySucess = '{"success":true,"errors":[],"accountId":"{0}","accountRating":"{1}"}';
+    private static String expectedResponseBodySuccess = '{"success":true,"errors":[],"accountId":"{0}","accountRating":"{1}"}';
     private static String expectedResponseBodyFailureNoErrorDefined = '{"success":false,"errors":[]}';
     private static String expectedResponseBodyFailure = '{"success":false,"errors":[{"errorCode":"{0}","message":"{1}"}]}';
     
@@ -41,12 +41,12 @@ private class ExampleRatingCalloutTestMVN {
                                      FROM Account
                                     LIMIT 1];
         String expectedRating = 'Test Account Rating';
-        expectedResponseBodySucess = expectedResponseBodySucess.replace('{0}', expectedAccount.Id);
-        expectedResponseBodySucess = expectedResponseBodySucess.replace('{1}', expectedRating);
+        expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{0}', expectedAccount.Id);
+        expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{1}', expectedRating);
         RestMockMVN responseMock = new RestMockMVN(
             200,
             'SUCCESS',
-            expectedResponseBodySucess,
+            expectedResponseBodySuccess,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
         Test.setMock(HttpCalloutMock.class, responseMock);
@@ -60,7 +60,7 @@ private class ExampleRatingCalloutTestMVN {
         System.assertEquals(expectedRating, actualAccount.Rating);
         Rest_Log_MVN__c actuallog = [SELECT Id, Status_MVN__c FROM Rest_Log_MVN__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilderMVN.SUCCESS, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.STATUS_SUCCESS, actualLog.Status_MVN__c);
     }
 
     /**
@@ -72,12 +72,12 @@ private class ExampleRatingCalloutTestMVN {
                                      FROM Account
                                     LIMIT 1];
         String expectedRating = 'Test Account Rating';
-        expectedResponseBodySucess = expectedResponseBodySucess.replace('{0}', expectedAccount.Id);
-        expectedResponseBodySucess = expectedResponseBodySucess.replace('{1}', expectedRating);
+        expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{0}', expectedAccount.Id);
+        expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{1}', expectedRating);
         RestMockMVN responseMock = new RestMockMVN(
             200,
-            'SUCCESS',
-            expectedResponseBodySucess,
+            RestLogBuilderMVN.STATUS_SUCCESS,
+            expectedResponseBodySuccess,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
         Test.setMock(HttpCalloutMock.class, responseMock);
@@ -90,7 +90,7 @@ private class ExampleRatingCalloutTestMVN {
         System.assertEquals(expectedRating, actualAccount.Rating);
         Rest_Log_MVN__c actuallog = [SELECT Id, Status_MVN__c FROM Rest_Log_MVN__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilderMVN.SUCCESS, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.STATUS_SUCCESS, actualLog.Status_MVN__c);
     }
 
     /**
@@ -107,7 +107,7 @@ private class ExampleRatingCalloutTestMVN {
         expectedResponseBodyFailure = expectedResponseBodyFailure.replace('{1}', expectedMessage);
         RestMockMVN responseMock = new RestMockMVN(
             200,
-            'ERROR',
+            RestLogBuilderMVN.STATUS_FAILURE,
             expectedResponseBodyFailure,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
@@ -122,7 +122,7 @@ private class ExampleRatingCalloutTestMVN {
         System.assertNotEquals(null, actualLog.Id);
         System.assertEquals(expectedErrorCode, actualLog.Error_Code_MVN__c);
         System.assertEquals(expectedMessage, actualLog.Message_MVN__c);
-        System.assertEquals(RestLogBuilderMVN.FAILURE, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.STATUS_FAILURE, actualLog.Status_MVN__c);
     }
 
     /**
@@ -135,7 +135,7 @@ private class ExampleRatingCalloutTestMVN {
                                     LIMIT 1];
         RestMockMVN responseMock = new RestMockMVN(
             200,
-            'ERROR',
+            RestLogBuilderMVN.STATUS_FAILURE,
             expectedResponseBodyFailureNoErrorDefined,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
@@ -150,6 +150,6 @@ private class ExampleRatingCalloutTestMVN {
         System.assertNotEquals(null, actualLog.Id);
         System.assertEquals(ExampleRatingCalloutMVN.EXCEPTION_TEXT, actualLog.Error_Code_MVN__c);
         System.assertEquals(ExampleRatingCalloutMVN.EXCEPTION_TEXT, actualLog.Message_MVN__c);
-        System.assertEquals(RestLogBuilderMVN.FAILURE, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilderMVN.STATUS_FAILURE, actualLog.Status_MVN__c);
     }
 }
