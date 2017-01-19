@@ -21,7 +21,7 @@ public class ExampleOpportunityWrapperTestMVN {
     }
 
     /**
-    * @description 
+    * @description tests opportunity sObject to opportunity wrapper mapping
     */
     @isTest
     private static void it_should_MapOpportunityToWrapper() {
@@ -35,7 +35,7 @@ public class ExampleOpportunityWrapperTestMVN {
     }
 
     /**
-    * @description asserts site wrap to site mappings￼
+    * @description asserts opportunity sObject mapping to opportunity wrapper
     * @param Opportunity Opportunity
     * @param ExampleOpportunityWrapperMVN wrapper
     */

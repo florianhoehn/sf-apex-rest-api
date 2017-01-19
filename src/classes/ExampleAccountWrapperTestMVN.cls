@@ -29,7 +29,7 @@ public class ExampleAccountWrapperTestMVN {
     }
 
     /**
-    * @description 
+    * @description tests account sObject to account wrapper mapping for callout
     */
     @isTest
     private static void it_should_MapAccountToWrapper() {
@@ -46,7 +46,7 @@ public class ExampleAccountWrapperTestMVN {
     }
 
     /**
-    * @description 
+    * @description tests account wrapper to account sObject conversion for callout response
     */
     @isTest
     private static void it_should_ConvertWrapperToAccount() {
@@ -61,7 +61,7 @@ public class ExampleAccountWrapperTestMVN {
     }
 
     /**
-    * @description creates wrap
+    * @description creates account wrapper
     * @param Id accountId
     * @return ￼ExampleAccountWrapperMVN wrapper
     */
@@ -73,7 +73,7 @@ public class ExampleAccountWrapperTestMVN {
     }
 
     /**
-    * @description asserts site wrap to site mappings￼
+    * @description asserts account sObject mapping to account wrapper
     * @param Account account
     * @param ExampleAccountWrapperMVN wrapper
     */

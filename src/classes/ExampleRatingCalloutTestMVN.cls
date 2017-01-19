@@ -33,7 +33,7 @@ private class ExampleRatingCalloutTestMVN {
     }
 
     /**
-    * @description tests making a successful callout
+    * @description tests making a successful callout 
     */
     @isTest private static void it_should_DoACalloutWithReturnedRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
@@ -64,7 +64,7 @@ private class ExampleRatingCalloutTestMVN {
     }
 
     /**
-    * @description tests making a successful callout
+    * @description tests making a successful callout via the invoker (process builder)
     */
     @isTest private static void it_should_DoACalloutByInvokerWithReturnedRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
@@ -126,7 +126,7 @@ private class ExampleRatingCalloutTestMVN {
     }
 
     /**
-    * @description tests making a failed callout
+    * @description tests making a failed callout without error message being sent by endpoint
     */
     @isTest private static void it_should_DoACalloutWithStandardErrorReturned() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 

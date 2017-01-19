@@ -8,7 +8,7 @@
 public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     @TestVisible private static String EXCEPTION_TEXT = 'Example Standard Error Message'; 
     /**
-    * @description holds the study object which the callout is made from
+    * @description holds the account record which the callout is made from
     */
     private Account account;
 
@@ -21,7 +21,7 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     }
 
     /**
-    * @description send the study to the ePlan endpoint
+    * @description send the account with opportunities to rating engine
     */
     public void sendAccountToRatingEngine() {
         RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
@@ -58,7 +58,7 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     }
 
     /**
-    * @description callout batch studies called by @future and batch
+    * @description callout batch accounts called by @future and batch
     * @param Set<Id> accountIds
     */
     public static void sendBatchOfAccounts(Set<Id> accountIds) {
