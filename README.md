@@ -8,7 +8,7 @@ To get up and running with the code clone the repository and use your IDE or ANT
 </a>
 
 ## The Core
-[Architecture](architecture.png)
+![Architecture](architecture.png)
 
 Each Wrapper class should extend the RestWrapperMVN class to inherit its structure and functionality. Only if the wrapper is used in a response message it should instead extend the RestResponseMVN class.
 
