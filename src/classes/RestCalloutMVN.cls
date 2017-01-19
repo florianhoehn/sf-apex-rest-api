@@ -63,6 +63,16 @@ public with sharing virtual class RestCalloutMVN {
     }
 
     /**
+    * @description set header
+    * @param String headerName
+    * @param String headerValue
+    */
+    @TestVisible protected void setHeader(String headerName, String headerValue) {
+        this.httpRequest.setHeader(headerName, headerValue);
+    }
+
+
+    /**
     * @description sets JSON body
     * @param String requestBody
     */

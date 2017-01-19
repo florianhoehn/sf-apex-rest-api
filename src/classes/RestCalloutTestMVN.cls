@@ -92,6 +92,22 @@ private class RestCalloutTestMVN {
     }
 
     /**
+    * @description tests setting the header for the httpRequest
+    */
+    @isTest private static void it_should_SetAHeader() {
+        String expectedHeaderName = 'headerName';
+        String expectedHeaderValue = 'headerValue';
+        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
+        
+        Test.startTest();
+            actualRestCallout.setHeader(expectedHeaderName, expectedHeaderValue);
+        Test.stopTest();
+
+        System.assertNotEquals(null, actualRestCallout.httpRequest.getHeader(expectedHeaderName));
+        System.assertEquals(expectedHeaderValue, actualRestCallout.httpRequest.getHeader(expectedHeaderName));
+    }
+
+    /**
     * @description tests setting the body for the httpRequest
     */
     @isTest private static void it_should_SetTheBody() {
@@ -102,7 +118,6 @@ private class RestCalloutTestMVN {
             actualRestCallout.setBody(expectedBody);
         Test.stopTest();
 
-        // TODO: cannot test timeout set...
         System.assertEquals(expectedBody, actualRestCallout.httpRequest.getBody());
     }
     
