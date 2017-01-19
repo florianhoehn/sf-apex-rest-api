@@ -8,15 +8,15 @@ public with sharing class RestLogBuilderMVN {
     /**
     * @description Constants used in the log builder
     */
-    @TestVisible private final String LOGLEVEL_ALL = 'All';
-    @TestVisible private final String LOGLEVEL_FAILURE = 'Failure';
-    @TestVisible private final String SUCCESS = 'Success';
-    @TestVisible private final String FAILURE = 'Failure';
+    @TestVisible private static final String LOG_LEVEL_ALL = 'All';
+    @TestVisible private static final String LOG_LEVEL_FAILURE = 'Failure';
+    @TestVisible private static final String STATUS_SUCCESS = 'Success';
+    @TestVisible private static final String STATUS_FAILURE = 'Failure';
     
     /**
     * @description defines log level (create a setting for this)
     */
-    @TestVisible private String logLevel = LOGLEVEL_ALL;
+    @TestVisible private String logLevel = LOG_LEVEL_ALL;
     
     /**
     * @description defines log record that will be inserted or logged out
@@ -81,7 +81,7 @@ public with sharing class RestLogBuilderMVN {
     */
     public RestLogBuilderMVN insertLog() {
         this.log.Status_MVN__c = this.getStatus();
-        if(this.logLevel == LOGLEVEL_ALL || this.log.Status_MVN__c == LOGLEVEL_FAILURE) {
+        if(this.logLevel == LOG_LEVEL_ALL || this.log.Status_MVN__c == LOG_LEVEL_FAILURE) {
             insert this.log;
         } else {
             System.debug('===> Log: ' + this.log);
@@ -103,9 +103,9 @@ public with sharing class RestLogBuilderMVN {
     */
     private String getStatus() {
         if(this.log.Error_Code_MVN__c == null) {
-            return SUCCESS;
+            return STATUS_SUCCESS;
         } else {
-            return FAILURE;
+            return STATUS_FAILURE;
         }
     }
     
