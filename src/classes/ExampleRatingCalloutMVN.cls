@@ -25,15 +25,15 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     */
     public void sendAccountToRatingEngine() {
         RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
-        String requestPayload, responsePayload, errorCode;
+        String requestBody, responseBody, errorCode;
         try {
             ExampleAccountWrapperMVN wrapper = new ExampleAccountWrapperMVN(this.account);
             this.setMethod('POST');
             this.setEndpoint('/rating/engine');
-            requestPayload = wrapper.toJSON();
-            this.setBody(requestPayload);
-            responsePayload = this.call();
-            wrapper = (ExampleAccountWrapperMVN)System.JSON.deserialize(responsePayload, ExampleAccountWrapperMVN.class);
+            requestBody = wrapper.toJSON();
+            this.setBody(requestBody);
+            responseBody = this.call();
+            wrapper = (ExampleAccountWrapperMVN)System.JSON.deserialize(responseBody, ExampleAccountWrapperMVN.class);
             if(wrapper.success) {
                 this.account = (Account)wrapper.convert();
                 update this.account;
@@ -51,8 +51,8 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
                                    .withErrorCode(errorCode);
         } finally {
             logBuilder.withEndpoint('ePlan')
-                      .withRequestPayload(requestPayload)
-                      .withResponsePayload(responsePayload)
+                      .withRequestBody(requestBody)
+                      .withResponseBody(responseBody)
                       .insertLog();
         }
     }

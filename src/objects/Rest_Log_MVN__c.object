@@ -85,20 +85,20 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
-        <fullName>Request_Payload_MVN__c</fullName>
-        <description>Holds the payload of the request</description>
+        <fullName>Request_Body_MVN__c</fullName>
+        <description>Holds the body of the request</description>
         <externalId>false</externalId>
-        <label>Request Payload</label>
+        <label>Request Body</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Response_Payload_MVN__c</fullName>
+        <fullName>Response_Body_MVN__c</fullName>
         <description>Holds the response of the rest callout</description>
         <externalId>false</externalId>
-        <label>Response Payload</label>
+        <label>Response Body</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
