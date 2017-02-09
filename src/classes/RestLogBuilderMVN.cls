@@ -12,7 +12,9 @@ public with sharing class RestLogBuilderMVN {
     @TestVisible private static final String LOG_LEVEL_FAILURE = 'Failure';
     @TestVisible private static final String STATUS_SUCCESS = 'Success';
     @TestVisible private static final String STATUS_FAILURE = 'Failure';
-    
+    private static final Integer TEXT_MAX_NUMBER_CHARS = 255;
+    private static final Integer TEXTAREA_MAX_NUMBER_CHARS = 131072;
+
     /**
     * @description defines log level (create a setting for this)
     */
@@ -35,7 +37,7 @@ public with sharing class RestLogBuilderMVN {
     * @param String endpoint
     */
     public RestLogBuilderMVN withEndpoint(String endpoint) {
-        this.log.Endpoint_MVN__c = this.cleanUp(endpoint, 255);
+        this.log.Endpoint_MVN__c = this.cleanUp(endpoint, TEXT_MAX_NUMBER_CHARS);
         return this;
     }
 
@@ -43,8 +45,8 @@ public with sharing class RestLogBuilderMVN {
     * @description set requestBody
     * @param String requestBody
     */
-    public RestLogBuilderMVN withRequestBody(String requestBody) {
-        this.log.Request_Body_MVN__c = this.cleanUp(requestBody, 131072);
+    public RestLogBuilderMVN withRequestPayload(String requestPayload) {
+        this.log.Request_Payload_MVN__c = this.cleanUp(requestPayload, TEXTAREA_MAX_NUMBER_CHARS);
         return this;
     }
 
@@ -52,8 +54,8 @@ public with sharing class RestLogBuilderMVN {
     * @description set responseBody
     * @param String responseBody
     */
-    public RestLogBuilderMVN withResponseBody(String responseBody) {
-        this.log.Response_Body_MVN__c = this.cleanUp(responseBody, 131072);
+    public RestLogBuilderMVN withResponsePayload(String responsePayload) {
+        this.log.Response_Payload_MVN__c = this.cleanUp(responsePayload, TEXTAREA_MAX_NUMBER_CHARS);
         return this;
     }
 
@@ -62,8 +64,8 @@ public with sharing class RestLogBuilderMVN {
     * @param Exception ex
     */
     public RestLogBuilderMVN withException(Exception ex) {
-        this.log.Message_MVN__c = this.cleanUp(ex.getMessage(), 131072);
-        this.log.Stack_Trace_MVN__c = this.cleanUp(ex.getStackTraceString(), 131072);
+        this.log.Message_MVN__c = this.cleanUp(ex.getMessage(), TEXTAREA_MAX_NUMBER_CHARS);
+        this.log.Stack_Trace_MVN__c = this.cleanUp(ex.getStackTraceString(), TEXTAREA_MAX_NUMBER_CHARS);
         return this;
     }
 
@@ -72,7 +74,7 @@ public with sharing class RestLogBuilderMVN {
     * @param String errorCode
     */
     public RestLogBuilderMVN withErrorCode(String errorCode) {
-        this.log.Error_Code_MVN__c = this.cleanUp(errorCode, 255);
+        this.log.Error_Code_MVN__c = this.cleanUp(errorCode, TEXT_MAX_NUMBER_CHARS);
         return this;
     }
 
