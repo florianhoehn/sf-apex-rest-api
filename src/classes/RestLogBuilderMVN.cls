@@ -40,20 +40,20 @@ public with sharing class RestLogBuilderMVN {
     }
 
     /**
-    * @description set requestPayload
-    * @param String requestPayload
+    * @description set requestBody
+    * @param String requestBody
     */
-    public RestLogBuilderMVN withRequestPayload(String requestPayload) {
-        this.log.Request_Payload_MVN__c = this.cleanUp(requestPayload, 131072);
+    public RestLogBuilderMVN withRequestBody(String requestBody) {
+        this.log.Request_Body_MVN__c = this.cleanUp(requestBody, 131072);
         return this;
     }
 
     /**
-    * @description set responsePayload
-    * @param String responsePayload
+    * @description set responseBody
+    * @param String responseBody
     */
-    public RestLogBuilderMVN withResponsePayload(String responsePayload) {
-        this.log.Response_Payload_MVN__c = this.cleanUp(responsePayload, 131072);
+    public RestLogBuilderMVN withResponseBody(String responseBody) {
+        this.log.Response_Body_MVN__c = this.cleanUp(responseBody, 131072);
         return this;
     }
 

@@ -12,23 +12,23 @@ private class RestLogBuilderTestMVN {
     @isTest
     private static void it_should_return_SuccessLogRecord_NotInserted() {
         String expectedEndpoint = 'expectedEndpoint';
-        String expectedRequestPayload = 'expected request payload';
-        String expectedResponsePayload = 'expected request payload';
+        String expectedRequestBody = 'expected request Body';
+        String expectedResponseBody = 'expected request Body';
 
         Test.startTest();
             RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
             logBuilder.logLevel = RestLogBuilderMVN.LOG_LEVEL_FAILURE;
             Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
-                                                  .withRequestPayload(expectedRequestPayload)
-                                                  .withResponsePayload(expectedResponsePayload)
+                                                  .withRequestBody(expectedRequestBody)
+                                                  .withResponseBody(expectedResponseBody)
                                                   .insertLog()
                                                   .build();
         Test.stopTest();
 
         System.assertEquals(null, actualLog.Id); // NOT INSERTED AS LOG LEVEL IS FAILURE ONLY
         System.assertEquals(expectedEndpoint, actualLog.Endpoint_MVN__c);
-        System.assertEquals(expectedRequestPayload, actualLog.Request_Payload_MVN__c);
-        System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
+        System.assertEquals(expectedRequestBody, actualLog.Request_Body_MVN__c);
+        System.assertEquals(expectedResponseBody, actualLog.Response_Body_MVN__c);
         System.assertEquals(RestLogBuilderMVN.STATUS_SUCCESS, actualLog.Status_MVN__c);
     }
     
@@ -38,22 +38,22 @@ private class RestLogBuilderTestMVN {
     @isTest
     private static void it_should_return_SuccessLogRecord_Inserted() {
         String expectedEndpoint = 'expectedEndpoint';
-        String expectedRequestPayload = 'expected request payload';
-        String expectedResponsePayload = 'expected request payload';
+        String expectedRequestBody = 'expected request Body';
+        String expectedResponseBody = 'expected request Body';
 
         Test.startTest();
             RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
             Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
-                                                  .withRequestPayload(expectedRequestPayload)
-                                                  .withResponsePayload(expectedResponsePayload)
+                                                  .withRequestBody(expectedRequestBody)
+                                                  .withResponseBody(expectedResponseBody)
                                                   .insertLog()
                                                   .build();
         Test.stopTest();
 
         System.assertNotEquals(null, actualLog.Id);
         System.assertEquals(expectedEndpoint, actualLog.Endpoint_MVN__c);
-        System.assertEquals(expectedRequestPayload, actualLog.Request_Payload_MVN__c);
-        System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
+        System.assertEquals(expectedRequestBody, actualLog.Request_Body_MVN__c);
+        System.assertEquals(expectedResponseBody, actualLog.Response_Body_MVN__c);
         System.assertEquals(RestLogBuilderMVN.STATUS_SUCCESS, actualLog.Status_MVN__c);
     }
     
@@ -63,8 +63,8 @@ private class RestLogBuilderTestMVN {
     @isTest
     private static void it_should_return_FailureLogRecord_Inserted() {
         String expectedEndpoint = 'expectedEndpoint';
-        String expectedRequestPayload = 'expected request payload';
-        String expectedResponsePayload = 'expected request payload';
+        String expectedRequestBody = 'expected request Body';
+        String expectedResponseBody = 'expected request Body';
         String expectedErrorCode = '400';
         String expectedExceptionText = 'expected exception message';
         JSONException expecedJsonEx = new JSONException(expectedExceptionText);
@@ -72,8 +72,8 @@ private class RestLogBuilderTestMVN {
         Test.startTest();
             RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
             Rest_Log_MVN__c actualLog = logBuilder.withEndpoint(expectedEndpoint)
-                                                  .withRequestPayload(expectedRequestPayload)
-                                                  .withResponsePayload(expectedResponsePayload)
+                                                  .withRequestBody(expectedRequestBody)
+                                                  .withResponseBody(expectedResponseBody)
                                                   .withErrorCode(expectedErrorCode)
                                                   .withException(expecedJsonEx)
                                                   .insertLog()
@@ -82,9 +82,9 @@ private class RestLogBuilderTestMVN {
 
         System.assertNotEquals(null, actualLog.Id);
         System.assertEquals(expectedEndpoint, actualLog.Endpoint_MVN__c);
-        System.assertEquals(expectedRequestPayload, actualLog.Request_Payload_MVN__c);
-        System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
-        System.assertEquals(expectedResponsePayload, actualLog.Response_Payload_MVN__c);
+        System.assertEquals(expectedRequestBody, actualLog.Request_Body_MVN__c);
+        System.assertEquals(expectedResponseBody, actualLog.Response_Body_MVN__c);
+        System.assertEquals(expectedResponseBody, actualLog.Response_Body_MVN__c);
         System.assertEquals(expectedErrorCode, actualLog.Error_Code_MVN__c);
         System.assertEquals(expectedExceptionText, actualLog.Message_MVN__c);
         System.assertEquals(RestLogBuilderMVN.STATUS_FAILURE, actualLog.Status_MVN__c);
