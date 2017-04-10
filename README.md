@@ -1,3 +1,6 @@
+<img alt="CI Status"
+     src="https://travis-ci.com/mavens/InnerSource-REST.svg?token=savYr8nqt2BUyQz53kAw&branch=master">
+
 # InnerSource-Rest
 InnerSource-Rest is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST integrations.
 
