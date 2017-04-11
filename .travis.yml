@@ -2,9 +2,6 @@ language: java
 branches:
   only: 
     - master
-    - develop
 script: 
-  - git submodule add --force https://github.com/florianhoehn/GIT-CI.git
-  - ant -lib GIT-CI/lib/ -f GIT-CI/build.xml validate -v
-notifications:
-  slack: mavenschat:2Pmhpn10xoK1ZfvHfV648YHe
+  - git submodule add --force https://github.com/florianhoehn/seamless.git
+  - ant -lib seamless/lib/ -f seamless/build.xml validate
