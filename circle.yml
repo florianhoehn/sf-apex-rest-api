@@ -4,4 +4,4 @@ machine:
 test:
   override:
     - git submodule add --force https://github.com/florianhoehn/seamless.git
-    - ant -lib seamless/lib/ -f seamless/build.xml validate
+    - ant -lib seamless/lib/ -f seamless/build.xml build
