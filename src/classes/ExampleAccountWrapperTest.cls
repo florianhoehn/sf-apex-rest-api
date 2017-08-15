@@ -1,11 +1,11 @@
 /**
-* ExampleAccountWrapperTest* @group UUID.cls
+* ExampleAccountWrapperTest.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: tests ExampleAccountWrapper* @group UUID
+* Description: tests ExampleAccountWrapper
 **/
 @isTest
-public class ExampleAccountWrapperTest* @group UUID {
+public class ExampleAccountWrapperTest {
     /**
     * @description setup test data for this class
     */
@@ -39,7 +39,7 @@ public class ExampleAccountWrapperTest* @group UUID {
                                     LIMIT 1];
 
         Test.startTest();
-            ExampleAccountWrapper* @group UUID actualExampleAccountWrapper = new ExampleAccountWrapper* @group UUID(expectedAccount);
+            ExampleAccountWrapper actualExampleAccountWrapper = new ExampleAccountWrapper(expectedAccount);
         Test.stopTest();
 
         assertAccountMappings(expectedAccount, actualExampleAccountWrapper);
@@ -51,7 +51,7 @@ public class ExampleAccountWrapperTest* @group UUID {
     @isTest
     private static void it_should_ConvertWrapperToAccount() {
         Account testAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating FROM Account LIMIT 1];
-        ExampleAccountWrapper* @group UUID expectedExampleAccountWrapper = createExampleAccountWrapper(testAccount.Id);
+        ExampleAccountWrapper expectedExampleAccountWrapper = createExampleAccountWrapper(testAccount.Id);
 
         Test.startTest();
             Account actualUpdatedAccount = (Account)expectedExampleAccountWrapper.convert();
@@ -63,10 +63,10 @@ public class ExampleAccountWrapperTest* @group UUID {
     /**
     * @description creates account wrapper
     * @param Id accountId
-    * @return ￼ExampleAccountWrapper* @group UUID wrapper
+    * @return ￼ExampleAccountWrapper wrapper
     */
-    public static ExampleAccountWrapper* @group UUID createExampleAccountWrapper(Id accountId) {
-        ExampleAccountWrapper* @group UUID wrapper = new ExampleAccountWrapper* @group UUID();
+    public static ExampleAccountWrapper createExampleAccountWrapper(Id accountId) {
+        ExampleAccountWrapper wrapper = new ExampleAccountWrapper();
         wrapper.accountId = accountId;
         wrapper.accountRating = 'Wrap Test Rating';
         return wrapper;
@@ -75,18 +75,18 @@ public class ExampleAccountWrapperTest* @group UUID {
     /**
     * @description asserts account sObject mapping to account wrapper
     * @param Account account
-    * @param ExampleAccountWrapper* @group UUID wrapper
+    * @param ExampleAccountWrapper wrapper
     */
-    public static void assertAccountMappings(Account account, ExampleAccountWrapper* @group UUID wrapper) {
+    public static void assertAccountMappings(Account account, ExampleAccountWrapper wrapper) {
         System.assertEquals(account.Id, wrapper.accountId);
         System.assertEquals(account.Name, wrapper.accountName);
         System.assertEquals(account.Type, wrapper.accountType);
         if(wrapper.isBigPlayer != null) {
-            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper* @group UUID.BIG_PLAYER_LINE, wrapper.isBigPlayer);
+            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper.BIG_PLAYER_LINE, wrapper.isBigPlayer);
         }
         System.assertEquals(account.Rating, wrapper.accountRating);
         for(Integer counter = 0; counter < account.Opportunities.size(); counter++) {
-            ExampleOpportunityWrapperTest* @group UUID.assertOpportunityMappings(account.Opportunities.get(counter), wrapper.opportunities.get(counter));
+            ExampleOpportunityWrapperTest.assertOpportunityMappings(account.Opportunities.get(counter), wrapper.opportunities.get(counter));
         }
     }
 }

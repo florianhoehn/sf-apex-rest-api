@@ -1,21 +1,21 @@
 /**
-* RestWrapper* @group UUID.cls
+* RestWrapper.cls
 * Created By: Florian Hoehn
 * Created On: 09/15/2016
 * Description: defines the core functionality of all wrapper classes
 *              should be extended: mapFields & convertFields needs to be overridden
 **/
-public with sharing abstract class RestWrapper* @group UUID {
+public with sharing abstract class RestWrapper {
     /**
     * @description constructor
     */
-    public RestWrapper* @group UUID() {}
+    public RestWrapper() {}
 
     /**
     * @description constructor, calls mapFields method (overridden one if extended)
     * @param Object obj
     */
-    public RestWrapper* @group UUID(Object obj) {
+    public RestWrapper(Object obj) {
       this.mapFields(obj);
     }
 

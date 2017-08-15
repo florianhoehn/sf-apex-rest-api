@@ -1,11 +1,11 @@
 /**
-* ExampleRatingCallout* @group UUID.cls
+* ExampleRatingCallout.cls
 * Created By: Florian Hoehn
 * Created On: January 18th, 2017
 * Description: defines the specific callout for the example integration to receive rating information
 *              defines calls for this callout from the process builder, batch jobs and an @future call
 **/
-public with sharing class ExampleRatingCallout* @group UUID extends RestCallout* @group UUID {
+public with sharing class ExampleRatingCallout extends RestCallout {
     @TestVisible private static String EXCEPTION_TEXT = 'Example Standard Error Message';
     /**
     * @description holds the account record which the callout is made from
@@ -16,7 +16,7 @@ public with sharing class ExampleRatingCallout* @group UUID extends RestCallout*
     * @description constructor
     * @param Account account
     */
-    public ExampleRatingCallout* @group UUID(Account account) {
+    public ExampleRatingCallout(Account account) {
         this.account = account;
     }
 
@@ -24,16 +24,16 @@ public with sharing class ExampleRatingCallout* @group UUID extends RestCallout*
     * @description send the account with opportunities to rating engine
     */
     public void sendAccountToRatingEngine() {
-        RestLogBuilder* @group UUID logBuilder = new RestLogBuilder* @group UUID();
+        RestLogBuilder logBuilder = new RestLogBuilder();
         String requestBody, responseBody, errorCode;
         try {
-            ExampleAccountWrapper* @group UUID wrapper = new ExampleAccountWrapper* @group UUID(this.account);
+            ExampleAccountWrapper wrapper = new ExampleAccountWrapper(this.account);
             this.setMethod('POST');
             this.setEndpoint('/rating/engine');
             requestBody = wrapper.toJSON();
             this.setBody(requestBody);
             responseBody = this.call();
-            wrapper = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(responseBody, ExampleAccountWrapper* @group UUID.class);
+            wrapper = (ExampleAccountWrapper)System.JSON.deserialize(responseBody, ExampleAccountWrapper.class);
             if(wrapper.success) {
                 this.account = (Account)wrapper.convert();
                 update this.account;
@@ -66,7 +66,7 @@ public with sharing class ExampleRatingCallout* @group UUID extends RestCallout*
                                       (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                  FROM Account
                                 WHERE Id IN :accountIds]) {
-            ExampleRatingCallout* @group UUID callout = new ExampleRatingCallout* @group UUID(account);
+            ExampleRatingCallout callout = new ExampleRatingCallout(account);
             callout.sendAccountToRatingEngine();
         }
     }

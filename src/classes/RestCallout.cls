@@ -1,10 +1,10 @@
 /**
-* RestCallout* @group UUID.cls
+* RestCallout.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
 * Description: defines the core functionality of callouts - should be extended for each specific callout
 **/
-public with sharing virtual class RestCallout* @group UUID {
+public with sharing virtual class RestCallout {
     /**
     * @description defines max timeout
     */
@@ -18,7 +18,7 @@ public with sharing virtual class RestCallout* @group UUID {
     /**
     * @description constructor, initiates httpRequest and number of tries
     */
-    public RestCallout* @group UUID() {
+    public RestCallout() {
         this.createHttpRequest();
     }
 

@@ -1,17 +1,17 @@
 /**
-* RestCalloutTest* @group UUID.cls
+* RestCalloutTest.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: Test class for RestCallout* @group UUID
+* Description: Test class for RestCallout
 **/
 @isTest
-private class RestCalloutTest* @group UUID {
+private class RestCalloutTest {
     /**
-    * @description tests httpRequest is initiated on constructing the RestCallout* @group UUID class
+    * @description tests httpRequest is initiated on constructing the RestCallout class
     */
     @isTest private static void it_should_InstantiateWithDefaultHeaders() {
         Test.startTest();
-            RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+            RestCallout actualRestCallout = new RestCallout();
         Test.stopTest();
 
         System.assertNotEquals(null, actualRestCallout.httpRequest);
@@ -23,7 +23,7 @@ private class RestCalloutTest* @group UUID {
     */
     @isTest private static void it_should_SetTheMethod() {
         String expectedMethod = 'GET';
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setMethod(expectedMethod);
@@ -37,7 +37,7 @@ private class RestCalloutTest* @group UUID {
     */
     @isTest private static void it_should_SetTheEndpoint() {
         String expectedEndpoint = 'endpoint';
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setEndpoint(expectedEndpoint);
@@ -51,7 +51,7 @@ private class RestCalloutTest* @group UUID {
     */
     @isTest private static void it_should_SetTheEndpointViaNamedCredential() {
         String expectedEndpoint = 'endpoint';
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setNamedCredential(expectedEndpoint);
@@ -65,7 +65,7 @@ private class RestCalloutTest* @group UUID {
     */
     /* TODO: replace <certName> with an existing certificate in our org
     @isTest private static void it_should_SetTheClientCertificate() {
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setClientCertificate('<certName>');
@@ -80,7 +80,7 @@ private class RestCalloutTest* @group UUID {
     * @description tests setting the timeout for the httpRequest
     */
     @isTest private static void it_should_SetTheTimeOut() {
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setTimeout(1);
@@ -97,7 +97,7 @@ private class RestCalloutTest* @group UUID {
     @isTest private static void it_should_SetAHeader() {
         String expectedHeaderName = 'headerName';
         String expectedHeaderValue = 'headerValue';
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setHeader(expectedHeaderName, expectedHeaderValue);
@@ -112,7 +112,7 @@ private class RestCalloutTest* @group UUID {
     */
     @isTest private static void it_should_SetTheBody() {
         String expectedBody = 'body';
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
 
         Test.startTest();
             actualRestCallout.setBody(expectedBody);
@@ -125,11 +125,11 @@ private class RestCalloutTest* @group UUID {
     * @description tests making a successful callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedSuccess() {
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
         String expectedResponseBody = 'success body';
-        RestMock* @group UUID responseMock = new RestMock* @group UUID(
+        RestMock responseMock = new RestMock(
             200,
-            RestLogBuilder* @group UUID.STATUS_SUCCESS,
+            RestLogBuilder.STATUS_SUCCESS,
             expectedResponseBody,
             new Map<String, String>()
         );
@@ -146,12 +146,12 @@ private class RestCalloutTest* @group UUID {
     * @description tests making a failed callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedFailure() {
-        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+        RestCallout actualRestCallout = new RestCallout();
         Integer expectedResponseStatus = 400;
         String expectedResponseBody = 'failure body';
-        RestMock* @group UUID responseMock = new RestMock* @group UUID(
+        RestMock responseMock = new RestMock(
             expectedResponseStatus,
-            RestLogBuilder* @group UUID.STATUS_FAILURE,
+            RestLogBuilder.STATUS_FAILURE,
             expectedResponseBody,
             new Map<String, String>()
         );

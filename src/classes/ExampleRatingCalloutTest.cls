@@ -1,11 +1,11 @@
 /**
-* ExampleRatingCalloutTest* @group UUID.cls
+* ExampleRatingCalloutTest.cls
 * Created By: Florian Hoehn
 * Created On: January 18th, 2017
-* Description: Test class for ExampleRatingCallout* @group UUID
+* Description: Test class for ExampleRatingCallout
 **/
 @isTest
-private class ExampleRatingCalloutTest* @group UUID {
+private class ExampleRatingCalloutTest {
     private static String expectedResponseBodySuccess = '{"success":true,"errors":[],"accountId":"{0}","accountRating":"{1}"}';
     private static String expectedResponseBodyFailureNoErrorDefined = '{"success":false,"errors":[]}';
     private static String expectedResponseBodyFailure = '{"success":false,"errors":[{"errorCode":"{0}","message":"{1}"}]}';
@@ -43,7 +43,7 @@ private class ExampleRatingCalloutTest* @group UUID {
         String expectedRating = 'Test Account Rating';
         expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{0}', expectedAccount.Id);
         expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{1}', expectedRating);
-        RestMock* @group UUID responseMock = new RestMock* @group UUID(
+        RestMock responseMock = new RestMock(
             200,
             'SUCCESS',
             expectedResponseBodySuccess,
@@ -52,15 +52,15 @@ private class ExampleRatingCalloutTest* @group UUID {
         Test.setMock(HttpCalloutMock.class, responseMock);
 
         Test.startTest();
-            ExampleRatingCallout* @group UUID actualRestCallout = new ExampleRatingCallout* @group UUID(expectedAccount);
+            ExampleRatingCallout actualRestCallout = new ExampleRatingCallout(expectedAccount);
             actualRestCallout.sendAccountToRatingEngine();
         Test.stopTest();
 
         Account actualAccount = [SELECT Id, Rating FROM Account WHERE Id = :expectedAccount.Id];
         System.assertEquals(expectedRating, actualAccount.Rating);
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_SUCCESS, actualLog.Status_* @group UUID__c);
+        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c);
     }
 
     /**
@@ -74,23 +74,23 @@ private class ExampleRatingCalloutTest* @group UUID {
         String expectedRating = 'Test Account Rating';
         expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{0}', expectedAccount.Id);
         expectedResponseBodySuccess = expectedResponseBodySuccess.replace('{1}', expectedRating);
-        RestMock* @group UUID responseMock = new RestMock* @group UUID(
+        RestMock responseMock = new RestMock(
             200,
-            RestLogBuilder* @group UUID.STATUS_SUCCESS,
+            RestLogBuilder.STATUS_SUCCESS,
             expectedResponseBodySuccess,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
         Test.setMock(HttpCalloutMock.class, responseMock);
 
         Test.startTest();
-            ExampleRatingCallout* @group UUID.sendAccountsToRatingEngine(new List<Id> {expectedAccount.Id});
+            ExampleRatingCallout.sendAccountsToRatingEngine(new List<Id> {expectedAccount.Id});
         Test.stopTest();
 
         Account actualAccount = [SELECT Id, Rating FROM Account WHERE Id = :expectedAccount.Id];
         System.assertEquals(expectedRating, actualAccount.Rating);
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_SUCCESS, actualLog.Status_* @group UUID__c);
+        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c);
     }
 
     /**
@@ -105,24 +105,24 @@ private class ExampleRatingCalloutTest* @group UUID {
         String expectedMessage = 'Test Message';
         expectedResponseBodyFailure = expectedResponseBodyFailure.replace('{0}', expectedErrorCode);
         expectedResponseBodyFailure = expectedResponseBodyFailure.replace('{1}', expectedMessage);
-        RestMock* @group UUID responseMock = new RestMock* @group UUID(
+        RestMock responseMock = new RestMock(
             200,
-            RestLogBuilder* @group UUID.STATUS_FAILURE,
+            RestLogBuilder.STATUS_FAILURE,
             expectedResponseBodyFailure,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
         Test.setMock(HttpCalloutMock.class, responseMock);
 
         Test.startTest();
-            ExampleRatingCallout* @group UUID actualRestCallout = new ExampleRatingCallout* @group UUID(expectedAccount);
+            ExampleRatingCallout actualRestCallout = new ExampleRatingCallout(expectedAccount);
             actualRestCallout.sendAccountToRatingEngine();
         Test.stopTest();
 
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c, Error_Code_* @group UUID__c, Message_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(expectedErrorCode, actualLog.Error_Code_* @group UUID__c);
-        System.assertEquals(expectedMessage, actualLog.Message_* @group UUID__c);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_FAILURE, actualLog.Status_* @group UUID__c);
+        System.assertEquals(expectedErrorCode, actualLog.Error_Code__c);
+        System.assertEquals(expectedMessage, actualLog.Message__c);
+        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 
     /**
@@ -133,23 +133,23 @@ private class ExampleRatingCalloutTest* @group UUID {
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
                                     LIMIT 1];
-        RestMock* @group UUID responseMock = new RestMock* @group UUID(
+        RestMock responseMock = new RestMock(
             200,
-            RestLogBuilder* @group UUID.STATUS_FAILURE,
+            RestLogBuilder.STATUS_FAILURE,
             expectedResponseBodyFailureNoErrorDefined,
             new Map<String, String> {'Content-Type' => 'application/json'}
         );
         Test.setMock(HttpCalloutMock.class, responseMock);
 
         Test.startTest();
-            ExampleRatingCallout* @group UUID actualRestCallout = new ExampleRatingCallout* @group UUID(expectedAccount);
+            ExampleRatingCallout actualRestCallout = new ExampleRatingCallout(expectedAccount);
             actualRestCallout.sendAccountToRatingEngine();
         Test.stopTest();
 
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c, Error_Code_* @group UUID__c, Message_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(ExampleRatingCallout* @group UUID.EXCEPTION_TEXT, actualLog.Error_Code_* @group UUID__c);
-        System.assertEquals(ExampleRatingCallout* @group UUID.EXCEPTION_TEXT, actualLog.Message_* @group UUID__c);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_FAILURE, actualLog.Status_* @group UUID__c);
+        System.assertEquals(ExampleRatingCallout.EXCEPTION_TEXT, actualLog.Error_Code__c);
+        System.assertEquals(ExampleRatingCallout.EXCEPTION_TEXT, actualLog.Message__c);
+        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 }

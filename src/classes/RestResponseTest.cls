@@ -1,18 +1,18 @@
 /**
-* RestResponseTest* @group UUID.cls
+* RestResponseTest.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: tests RestResponse* @group UUID
+* Description: tests RestResponse
 **/
 @isTest
-private class RestResponseTest* @group UUID {
+private class RestResponseTest {
     /**
     * @description tests constructor
     */
     @isTest
     private static void it_should_Instantiate() {
         Test.startTest();
-            RestResponse* @group UUID actualRestResponse = new RestResponse* @group UUID();
+            RestResponse actualRestResponse = new RestResponse();
         Test.stopTest();
 
         System.assertNotEquals(null, actualRestResponse);
@@ -27,7 +27,7 @@ private class RestResponseTest* @group UUID {
     @isTest
     private static void it_should_InstantiateWithObject() {
         Test.startTest();
-            RestResponse* @group UUID actualRestResponse = new RestResponse* @group UUID('testObject');
+            RestResponse actualRestResponse = new RestResponse('testObject');
         Test.stopTest();
 
         System.assertNotEquals(null, actualRestResponse);
@@ -42,7 +42,7 @@ private class RestResponseTest* @group UUID {
     @isTest
     private static void it_should_InstantiateRestError() {
         Test.startTest();
-            RestResponse* @group UUID.RestError* @group UUID actualRestError = new RestResponse* @group UUID.RestError* @group UUID();
+            RestResponse.RestError actualRestError = new RestResponse.RestError();
         Test.stopTest();
 
         System.assertNotEquals(null, actualRestError);
@@ -59,7 +59,7 @@ private class RestResponseTest* @group UUID {
         String expectedMessage = 'NOT FOUND';
 
         Test.startTest();
-            RestResponse* @group UUID.RestError* @group UUID actualRestError = new RestResponse* @group UUID.RestError* @group UUID(expectedErrorCode, expectedMessage);
+            RestResponse.RestError actualRestError = new RestResponse.RestError(expectedErrorCode, expectedMessage);
         Test.stopTest();
 
         System.assertNotEquals(null, actualRestError);
@@ -68,11 +68,11 @@ private class RestResponseTest* @group UUID {
     }
 
     /**
-    * @description tests to json inherited from RestWrapper* @group UUID
+    * @description tests to json inherited from RestWrapper
     */
     @isTest
     private static void it_should_ReturnJSON() {
-        RestResponse* @group UUID actualRestResponse = new RestResponse* @group UUID('testObject');
+        RestResponse actualRestResponse = new RestResponse('testObject');
         actualRestResponse.success = true;
 
         Test.startTest();
@@ -84,11 +84,11 @@ private class RestResponseTest* @group UUID {
     }
 
     /**
-    * @description tests convert inherited from RestWrapper* @group UUID
+    * @description tests convert inherited from RestWrapper
     */
     @isTest
     private static void it_should_ConvertToObject() {
-        RestResponse* @group UUID actualRestResponse = new RestResponse* @group UUID('testObject');
+        RestResponse actualRestResponse = new RestResponse('testObject');
         actualRestResponse.success = true;
 
         Test.startTest();

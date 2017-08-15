@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/florianhoehn/sf-apex-rest-api.svg?branch=master)](https://travis-ci.org/florianhoehn/sf-apex-rest-api)
+[![Code Climate](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/badges/gpa.svg)](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api)
+[![Test Coverage](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/badges/coverage.svg)](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/coverage)
+[![Issue Count](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/badges/issue_count.svg)](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api)
 
 # sf-apex-rest-api
 sf-apex-rest-api is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST integrations.

@@ -1,11 +1,11 @@
 /**
-* ExampleOpportunityWrapperTest* @group UUID.cls
+* ExampleOpportunityWrapperTest.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: tests ExampleOpportunityWrapper* @group UUID
+* Description: tests ExampleOpportunityWrapper
 **/
 @isTest
-public class ExampleOpportunityWrapperTest* @group UUID {
+public class ExampleOpportunityWrapperTest {
     /**
     * @description setup test data for this class
     */
@@ -28,7 +28,7 @@ public class ExampleOpportunityWrapperTest* @group UUID {
         Opportunity expectedOpportunity = [SELECT Id, Name, StageName, Amount FROM Opportunity LIMIT 1];
 
         Test.startTest();
-            ExampleOpportunityWrapper* @group UUID actualExampleOpportunityWrapper = new ExampleOpportunityWrapper* @group UUID(expectedOpportunity);
+            ExampleOpportunityWrapper actualExampleOpportunityWrapper = new ExampleOpportunityWrapper(expectedOpportunity);
         Test.stopTest();
 
         assertOpportunityMappings(expectedOpportunity, actualExampleOpportunityWrapper);
@@ -37,9 +37,9 @@ public class ExampleOpportunityWrapperTest* @group UUID {
     /**
     * @description asserts opportunity sObject mapping to opportunity wrapper
     * @param Opportunity Opportunity
-    * @param ExampleOpportunityWrapper* @group UUID wrapper
+    * @param ExampleOpportunityWrapper wrapper
     */
-    public static void assertOpportunityMappings(Opportunity Opportunity, ExampleOpportunityWrapper* @group UUID wrapper) {
+    public static void assertOpportunityMappings(Opportunity Opportunity, ExampleOpportunityWrapper wrapper) {
         System.assertEquals(Opportunity.Id, wrapper.opportunityId);
         System.assertEquals(Opportunity.Name, wrapper.opportunityName);
         System.assertEquals(Opportunity.StageName, wrapper.opportunityStage);

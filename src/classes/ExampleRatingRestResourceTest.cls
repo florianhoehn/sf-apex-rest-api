@@ -1,11 +1,11 @@
 /**
-* ExampleRatingRestResourceTest* @group UUID.cls
+* ExampleRatingRestResourceTest.cls
 * Created By: Florian Hoehn
 * Created On: January 19th, 2017
-* Description: tests ExampleRatingRestResource* @group UUID
+* Description: tests ExampleRatingRestResource
 **/
 @isTest
-private class ExampleRatingRestResourceTest* @group UUID {
+private class ExampleRatingRestResourceTest {
     /**
     * @description setup test data for this class
     */
@@ -41,21 +41,21 @@ private class ExampleRatingRestResourceTest* @group UUID {
         RestRequest req = new RestRequest();
         req.requestURI = '/services/apexrest/ratings/account/' + expectedAccount.Id;
         req.httpMethod = 'GET';
-        RestResponse res = new RestResponse();
+        System.RestResponse res = new System.RestResponse();
         RestContext.request = req;
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResource* @group UUID.getAccount();
+            ExampleRatingRestResource.getAccount();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
+        ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(true, actualResponse.success);
-        ExampleAccountWrapperTest* @group UUID.assertAccountMappings(expectedAccount, actualResponse);
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        ExampleAccountWrapperTest.assertAccountMappings(expectedAccount, actualResponse);
+        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_SUCCESS, actualLog.Status_* @group UUID__c);
+        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c);
     }
 
     /**
@@ -71,21 +71,21 @@ private class ExampleRatingRestResourceTest* @group UUID {
         RestRequest req = new RestRequest();
         req.requestURI = '/services/apexrest/ratings/account/' + expectedAccount.Id + 'FAIL';
         req.httpMethod = 'GET';
-        RestResponse res = new RestResponse();
+        System.RestResponse res = new System.RestResponse();
         RestContext.request = req;
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResource* @group UUID.getAccount();
+            ExampleRatingRestResource.getAccount();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
+        ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(false, actualResponse.success);
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c, Error_Code_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals('GETACCOUNT', actualLog.Error_Code_* @group UUID__c);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_FAILURE, actualLog.Status_* @group UUID__c);
+        System.assertEquals('GETACCOUNT', actualLog.Error_Code__c);
+        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 
     /**
@@ -102,20 +102,20 @@ private class ExampleRatingRestResourceTest* @group UUID {
         req.requestURI = '/services/apexrest/ratings/account/' + expectedAccount.Id;
         req.httpMethod = 'PUT';
         req.requestBody = Blob.valueOf('{"accountId":"' + expectedAccount.Id + '","accountRating":"' + expectedRating + '"}');
-        RestResponse res = new RestResponse();
+        System.RestResponse res = new System.RestResponse();
         RestContext.request = req;
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResource* @group UUID.updateRating();
+            ExampleRatingRestResource.updateRating();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
+        ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(true, actualResponse.success);
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_SUCCESS, actualLog.Status_* @group UUID__c);
+        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c);
         Account actualAccount = [SELECT Rating
                                    FROM Account
                                   WHERE Id = :expectedAccount.Id];
@@ -136,21 +136,21 @@ private class ExampleRatingRestResourceTest* @group UUID {
         req.requestURI = '/services/apexrest/ratings/account/' + expectedAccount.Id;
         req.httpMethod = 'PUT';
         req.requestBody = Blob.valueOf('{"accountId":"' + expectedAccount.Id + 'FAIL","accountRating":"' + expectedRating + '"}');
-        RestResponse res = new RestResponse();
+        System.RestResponse res = new System.RestResponse();
         RestContext.request = req;
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResource* @group UUID.updateRating();
+            ExampleRatingRestResource.updateRating();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
+        ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(false, actualResponse.success);
-        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c, Error_Code_* @group UUID__c FROM Rest_Log_* @group UUID__c];
+        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals('PUTACCOUNT', actualLog.Error_Code_* @group UUID__c);
-        System.assertEquals(RestLogBuilder* @group UUID.STATUS_FAILURE, actualLog.Status_* @group UUID__c);
+        System.assertEquals('PUTACCOUNT', actualLog.Error_Code__c);
+        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 
 }

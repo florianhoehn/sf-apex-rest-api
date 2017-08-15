@@ -1,10 +1,10 @@
 /**
-* ExampleAccountWrapper* @group UUID.cls
+* ExampleAccountWrapper.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
 * Description: defines the structure of the account for the example integration
 **/
-global with sharing class ExampleAccountWrapper* @group UUID extends RestResponse* @group UUID {
+global with sharing class ExampleAccountWrapper extends RestResponse {
     /**
     * @description
     */
@@ -18,18 +18,18 @@ global with sharing class ExampleAccountWrapper* @group UUID extends RestRespons
     public String accountType { get; set; }
     public String accountRating { get; set; }
     public Boolean isBigPlayer { get; set; }
-    public List<ExampleOpportunityWrapper* @group UUID> opportunities { get; set; }
+    public List<ExampleOpportunityWrapper> opportunities { get; set; }
 
     /**
     * @description constructor
     */
-    public ExampleAccountWrapper* @group UUID() {}
+    public ExampleAccountWrapper() {}
 
     /**
     * @description constructor which leverages the parents constructor
     * @param Object obj
     */
-    public ExampleAccountWrapper* @group UUID(Object obj) { super(obj); }
+    public ExampleAccountWrapper(Object obj) { super(obj); }
 
     /**
     * @description overrides mapFields method and defines the mapping sObject to wrapper
@@ -41,9 +41,9 @@ global with sharing class ExampleAccountWrapper* @group UUID extends RestRespons
         this.accountName = account.Name;
         this.accountType = account.Type;
         this.isBigPlayer = account.AnnualRevenue > BIG_PLAYER_LINE;
-        this.opportunities = new List<ExampleOpportunityWrapper* @group UUID>();
+        this.opportunities = new List<ExampleOpportunityWrapper>();
         for(Opportunity opportunity : account.Opportunities) {
-            this.opportunities.add(new ExampleOpportunityWrapper* @group UUID(opportunity));
+            this.opportunities.add(new ExampleOpportunityWrapper(opportunity));
         }
     }
 

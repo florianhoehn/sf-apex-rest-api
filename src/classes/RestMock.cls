@@ -1,11 +1,11 @@
 /**
-* RestMock* @group UUID.cls
+* RestMock.cls
 * Created By: Florian Hoehn
 * Created On: * January 17th, 2017
 * Description: create mocks for rest callouts
 **/
 @isTest
-public class RestMock* @group UUID implements HttpCalloutMock {
+public class RestMock implements HttpCalloutMock {
     /**
     * @description status code returned
     */
@@ -33,7 +33,7 @@ public class RestMock* @group UUID implements HttpCalloutMock {
     * @param String body
     * @param Map<String, String> responseHeaders
     */
-    public RestMock* @group UUID(Integer code, String status, String body, Map<String, String> responseHeaders) {
+    public RestMock(Integer code, String status, String body, Map<String, String> responseHeaders) {
         this.code = code;
         this.status = status;
         this.body = body;
