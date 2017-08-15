@@ -8,7 +8,7 @@ global with sharing class ExampleAccountWrapper extends RestResponse {
     /**
     * @description
     */
-    @TestVisible private static Integer BIG_PLAYER_LINE = 100000;
+    @TestVisible private final static Integer BIG_PLAYER_LINE = 100000;
 
     /**
     * @description
