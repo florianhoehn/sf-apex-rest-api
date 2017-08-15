@@ -4,7 +4,7 @@
 [![Issue Count](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/badges/issue_count.svg)](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api)
 
 # sf-apex-rest-api
-sf-apex-rest-api is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST integrations.
+sf-apex-rest-api is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST/JSON integrations.
 
 ## Getting started
 To get up and running with the code clone the repository and use your IDE or ANT Migration Tool to deploy OR: <a href="https://githubsfdeploy.herokuapp.com?owner=florianhoehn&repo=sf-apex-rest-api">
