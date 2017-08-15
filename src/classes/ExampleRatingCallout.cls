@@ -1,12 +1,12 @@
 /**
-* ExampleRatingCalloutMVN.cls
+* ExampleRatingCallout* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 18th, 2017
 * Description: defines the specific callout for the example integration to receive rating information
 *              defines calls for this callout from the process builder, batch jobs and an @future call
 **/
-public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
-    @TestVisible private static String EXCEPTION_TEXT = 'Example Standard Error Message'; 
+public with sharing class ExampleRatingCallout* @group UUID extends RestCallout* @group UUID {
+    @TestVisible private static String EXCEPTION_TEXT = 'Example Standard Error Message';
     /**
     * @description holds the account record which the callout is made from
     */
@@ -16,7 +16,7 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     * @description constructor
     * @param Account account
     */
-    public ExampleRatingCalloutMVN(Account account) {
+    public ExampleRatingCallout* @group UUID(Account account) {
         this.account = account;
     }
 
@@ -24,26 +24,26 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     * @description send the account with opportunities to rating engine
     */
     public void sendAccountToRatingEngine() {
-        RestLogBuilderMVN logBuilder = new RestLogBuilderMVN();
+        RestLogBuilder* @group UUID logBuilder = new RestLogBuilder* @group UUID();
         String requestBody, responseBody, errorCode;
         try {
-            ExampleAccountWrapperMVN wrapper = new ExampleAccountWrapperMVN(this.account);
+            ExampleAccountWrapper* @group UUID wrapper = new ExampleAccountWrapper* @group UUID(this.account);
             this.setMethod('POST');
             this.setEndpoint('/rating/engine');
             requestBody = wrapper.toJSON();
             this.setBody(requestBody);
             responseBody = this.call();
-            wrapper = (ExampleAccountWrapperMVN)System.JSON.deserialize(responseBody, ExampleAccountWrapperMVN.class);
+            wrapper = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(responseBody, ExampleAccountWrapper* @group UUID.class);
             if(wrapper.success) {
                 this.account = (Account)wrapper.convert();
                 update this.account;
             } else {
                 if(wrapper.errors != null && !wrapper.errors.isEmpty()) { // throw first error returned
                     errorCode = wrapper.errors.get(0).errorCode;
-                    throw new System.CalloutException(wrapper.errors.get(0).message); 
+                    throw new System.CalloutException(wrapper.errors.get(0).message);
                 } else {
                     errorCode = EXCEPTION_TEXT;
-                    throw new System.CalloutException(EXCEPTION_TEXT); 
+                    throw new System.CalloutException(EXCEPTION_TEXT);
                 }
             }
         } catch(Exception e) {
@@ -62,11 +62,11 @@ public with sharing class ExampleRatingCalloutMVN extends RestCalloutMVN {
     * @param Set<Id> accountIds
     */
     public static void sendBatchOfAccounts(Set<Id> accountIds) {
-        for(Account account : [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+        for(Account account : [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                       (SELECT Id, Name, Amount, StageName FROM Opportunities)
-                                 FROM Account 
+                                 FROM Account
                                 WHERE Id IN :accountIds]) {
-            ExampleRatingCalloutMVN callout = new ExampleRatingCalloutMVN(account);
+            ExampleRatingCallout* @group UUID callout = new ExampleRatingCallout* @group UUID(account);
             callout.sendAccountToRatingEngine();
         }
     }

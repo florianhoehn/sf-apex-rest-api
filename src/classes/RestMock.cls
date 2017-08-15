@@ -1,28 +1,28 @@
 /**
-* RestMockMVN.cls
+* RestMock* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: * January 17th, 2017
 * Description: create mocks for rest callouts
 **/
 @isTest
-public class RestMockMVN implements HttpCalloutMock {
+public class RestMock* @group UUID implements HttpCalloutMock {
     /**
-    * @description status code returned 
+    * @description status code returned
     */
     protected Integer code;
-    
+
     /**
-    * @description status returned 
+    * @description status returned
     */
     protected String status;
-    
+
     /**
-    * @description body returned 
+    * @description body returned
     */
     protected String body;
-    
+
     /**
-    * @description response headers 
+    * @description response headers
     */
     protected Map<String, String> responseHeaders;
 
@@ -33,7 +33,7 @@ public class RestMockMVN implements HttpCalloutMock {
     * @param String body
     * @param Map<String, String> responseHeaders
     */
-    public RestMockMVN(Integer code, String status, String body, Map<String, String> responseHeaders) {
+    public RestMock* @group UUID(Integer code, String status, String body, Map<String, String> responseHeaders) {
         this.code = code;
         this.status = status;
         this.body = body;

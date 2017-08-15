@@ -1,7 +1,7 @@
 language: java
 branches:
-  only: 
+  only:
     - master
-script: 
+script:
   - git submodule add --force https://github.com/florianhoehn/seamless.git
   - ant -lib seamless/lib/ -f seamless/build.xml build

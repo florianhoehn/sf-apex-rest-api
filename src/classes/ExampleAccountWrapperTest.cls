@@ -1,11 +1,11 @@
 /**
-* ExampleAccountWrapperTestMVN.cls
+* ExampleAccountWrapperTest* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: tests ExampleAccountWrapperMVN
+* Description: tests ExampleAccountWrapper* @group UUID
 **/
 @isTest
-public class ExampleAccountWrapperTestMVN {
+public class ExampleAccountWrapperTest* @group UUID {
     /**
     * @description setup test data for this class
     */
@@ -33,13 +33,13 @@ public class ExampleAccountWrapperTestMVN {
     */
     @isTest
     private static void it_should_MapAccountToWrapper() {
-        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
                                     LIMIT 1];
 
         Test.startTest();
-            ExampleAccountWrapperMVN actualExampleAccountWrapper = new ExampleAccountWrapperMVN(expectedAccount);
+            ExampleAccountWrapper* @group UUID actualExampleAccountWrapper = new ExampleAccountWrapper* @group UUID(expectedAccount);
         Test.stopTest();
 
         assertAccountMappings(expectedAccount, actualExampleAccountWrapper);
@@ -51,7 +51,7 @@ public class ExampleAccountWrapperTestMVN {
     @isTest
     private static void it_should_ConvertWrapperToAccount() {
         Account testAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating FROM Account LIMIT 1];
-        ExampleAccountWrapperMVN expectedExampleAccountWrapper = createExampleAccountWrapper(testAccount.Id);
+        ExampleAccountWrapper* @group UUID expectedExampleAccountWrapper = createExampleAccountWrapper(testAccount.Id);
 
         Test.startTest();
             Account actualUpdatedAccount = (Account)expectedExampleAccountWrapper.convert();
@@ -63,10 +63,10 @@ public class ExampleAccountWrapperTestMVN {
     /**
     * @description creates account wrapper
     * @param Id accountId
-    * @return ￼ExampleAccountWrapperMVN wrapper
+    * @return ￼ExampleAccountWrapper* @group UUID wrapper
     */
-    public static ExampleAccountWrapperMVN createExampleAccountWrapper(Id accountId) {
-        ExampleAccountWrapperMVN wrapper = new ExampleAccountWrapperMVN();
+    public static ExampleAccountWrapper* @group UUID createExampleAccountWrapper(Id accountId) {
+        ExampleAccountWrapper* @group UUID wrapper = new ExampleAccountWrapper* @group UUID();
         wrapper.accountId = accountId;
         wrapper.accountRating = 'Wrap Test Rating';
         return wrapper;
@@ -75,18 +75,18 @@ public class ExampleAccountWrapperTestMVN {
     /**
     * @description asserts account sObject mapping to account wrapper
     * @param Account account
-    * @param ExampleAccountWrapperMVN wrapper
+    * @param ExampleAccountWrapper* @group UUID wrapper
     */
-    public static void assertAccountMappings(Account account, ExampleAccountWrapperMVN wrapper) {
+    public static void assertAccountMappings(Account account, ExampleAccountWrapper* @group UUID wrapper) {
         System.assertEquals(account.Id, wrapper.accountId);
         System.assertEquals(account.Name, wrapper.accountName);
         System.assertEquals(account.Type, wrapper.accountType);
         if(wrapper.isBigPlayer != null) {
-            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapperMVN.BIG_PLAYER_LINE, wrapper.isBigPlayer);
+            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper* @group UUID.BIG_PLAYER_LINE, wrapper.isBigPlayer);
         }
         System.assertEquals(account.Rating, wrapper.accountRating);
         for(Integer counter = 0; counter < account.Opportunities.size(); counter++) {
-            ExampleOpportunityWrapperTestMVN.assertOpportunityMappings(account.Opportunities.get(counter), wrapper.opportunities.get(counter));
+            ExampleOpportunityWrapperTest* @group UUID.assertOpportunityMappings(account.Opportunities.get(counter), wrapper.opportunities.get(counter));
         }
     }
 }

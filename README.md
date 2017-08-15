@@ -1,11 +1,10 @@
-<img alt="CI Status"
-     src="https://travis-ci.com/mavens/InnerSource-REST.svg?token=savYr8nqt2BUyQz53kAw&branch=master">
+[![Build Status](https://travis-ci.org/florianhoehn/sf-apex-rest-api.svg?branch=master)](https://travis-ci.org/florianhoehn/sf-apex-rest-api)
 
-# InnerSource-Rest
-InnerSource-Rest is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST integrations.
+# sf-apex-rest-api
+sf-apex-rest-api is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST integrations.
 
 ## Getting started
-To get up and running with the code clone the repository and use your IDE or ANT Migration Tool to deploy OR: <a href="https://githubsfdeploy.herokuapp.com?owner=mavens&repo=InnerSource-Rest">
+To get up and running with the code clone the repository and use your IDE or ANT Migration Tool to deploy OR: <a href="https://githubsfdeploy.herokuapp.com?owner=florianhoehn&repo=sf-apex-rest-api">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
@@ -13,11 +12,11 @@ To get up and running with the code clone the repository and use your IDE or ANT
 ## The Core
 ![Architecture](architecture.png)
 
-Each Wrapper class should extend the RestWrapperMVN class to inherit its structure and functionality. Only if the wrapper is used in a response message it should instead extend the RestResponseMVN class.
+Each Wrapper class should extend the RestWrapper class to inherit its structure and functionality. Only if the wrapper is used in a response message it should instead extend the RestResponse class.
 
-The RestLogBuilderMVN class ensures that all interactions can be logged in the same way.
+The RestLogBuilder class ensures that all interactions can be logged in the same way.
 
-RestCalloutMVN should be extended when creating a callout.
+RestCallout should be extended when creating a callout.
 
 ## The Example
 ### JSON
@@ -49,24 +48,24 @@ RestCalloutMVN should be extended when creating a callout.
 ```
 
 ### Wrapper
-Let's look at the ExampleAccountWrapperMVN, ExampleAccountWrapperTestMVN, ExampleOpportunityWrapperMVN and ExampleOpportunityWrapperTestMVN classes.
+Let's look at the ExampleAccountWrapper, ExampleAccountWrapperTest, ExampleOpportunityWrapper and ExampleOpportunityWrapperTest classes.
 
 Each wrapper class has its own mapping and conversion methods which control the mappings between sObjects and wrapper. If we can, we should keep this one to one BUT we can use helper wrapper classes to do a two to one ratio (i.e. map an Account and its primary Contact into one wrapper class)
 
 We need these wrapper classes to define the JSON structure and use the JSON magic Force.com provides us with.
 
 ### Callout
-Let's look at the ExampleRatingCalloutMVN and ExampleCalloutTestMVN classes.
+Let's look at the ExampleRatingCallout and ExampleCalloutTest classes.
 
 There are a couple of things happening in here. The actual method which does the POST and updates the account with the returned rating. It handles all the parsing via the wrapper classes and controls the logger.
 
 Then we have three 'invoking methods'.
 One for being invoked via BATCH, one @future and one enabling the callout to be invoked by a process.
 
-For each callout we can create a new class and re-use the RestCalloutMVN class from the core. If there are items like a certificate that are the same for all callouts, we can update those inside the RestCalloutMVN class and the createHttpRequest method.
+For each callout we can create a new class and re-use the RestCallout class from the core. If there are items like a certificate that are the same for all callouts, we can update those inside the RestCallout class and the createHttpRequest method.
 
 ### RestResource
-Let's look at the ExampleRatingRestResourceMVN and ExampleRatingRestResourceTestMVN classes.
+Let's look at the ExampleRatingRestResource and ExampleRatingRestResourceTest classes.
 
 Relatively straight forward we have one method per action (POST, PUT, GET), it controls the logging and DML logic and makes full use of Wrapper/JSON magic.
 

@@ -1,55 +1,55 @@
 /**
-* RestResponseMVN.cls
+* RestResponse* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: defines the structure of callout responses aligned with SF standard 
+* Description: defines the structure of callout responses aligned with SF standard
 **/
-global with sharing virtual class RestResponseMVN extends RestWrapperMVN{
+global with sharing virtual class RestResponse* @group UUID extends RestWrapper* @group UUID{
     /**
     * @group integration
     * @description defines the structure of integration errors
     */
-    public with sharing class RestErrorMVN {
+    public with sharing class RestError* @group UUID {
         public String errorCode { get; set; }
         public String message { get; set; }
-    
+
         /**
         * @description constructor
         */
-        public RestErrorMVN() {}
-        
+        public RestError* @group UUID() {}
+
         /**
         * @description constructor which leverages the parents constructor
         * @param String errorCode
         * @param String message
         */
-        public RestErrorMVN(String errorCode, String message) {
+        public RestError* @group UUID(String errorCode, String message) {
             this.errorCode = errorCode;
             this.message = message;
         }
     }
-    
-    public List<RestErrorMVN> errors { get; set; }
+
+    public List<RestError* @group UUID> errors { get; set; }
     public Boolean success { get; set; }
 
     /**
     * @description constructor
     */
-    public RestResponseMVN() {
-        this.errors = new List<RestErrorMVN>();
+    public RestResponse* @group UUID() {
+        this.errors = new List<RestError* @group UUID>();
     }
 
     /**
     * @description constructor which leverages the parents constructor
     * @param Object obj
     */
-    public RestResponseMVN(Object obj) { super(obj); }
+    public RestResponse* @group UUID(Object obj) { super(obj); }
 
     /**
     * @description overrides the mapFields method to initiate the empty error list
     * @param Object obj
-    */    
+    */
     private void mapFields(Object obj) {
-        this.errors = new List<RestErrorMVN>();
+        this.errors = new List<RestError* @group UUID>();
     }
 }

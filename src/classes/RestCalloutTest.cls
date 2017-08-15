@@ -1,17 +1,17 @@
 /**
-* RestCalloutTestMVN.cls
+* RestCalloutTest* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
-* Description: Test class for RestCalloutMVN
+* Description: Test class for RestCallout* @group UUID
 **/
 @isTest
-private class RestCalloutTestMVN {
+private class RestCalloutTest* @group UUID {
     /**
-    * @description tests httpRequest is initiated on constructing the RestCalloutMVN class
+    * @description tests httpRequest is initiated on constructing the RestCallout* @group UUID class
     */
     @isTest private static void it_should_InstantiateWithDefaultHeaders() {
         Test.startTest();
-            RestCalloutMVN actualRestCallout = new RestCalloutMVN();
+            RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
         Test.stopTest();
 
         System.assertNotEquals(null, actualRestCallout.httpRequest);
@@ -23,8 +23,8 @@ private class RestCalloutTestMVN {
     */
     @isTest private static void it_should_SetTheMethod() {
         String expectedMethod = 'GET';
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setMethod(expectedMethod);
         Test.stopTest();
@@ -37,8 +37,8 @@ private class RestCalloutTestMVN {
     */
     @isTest private static void it_should_SetTheEndpoint() {
         String expectedEndpoint = 'endpoint';
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setEndpoint(expectedEndpoint);
         Test.stopTest();
@@ -51,8 +51,8 @@ private class RestCalloutTestMVN {
     */
     @isTest private static void it_should_SetTheEndpointViaNamedCredential() {
         String expectedEndpoint = 'endpoint';
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setNamedCredential(expectedEndpoint);
         Test.stopTest();
@@ -65,8 +65,8 @@ private class RestCalloutTestMVN {
     */
     /* TODO: replace <certName> with an existing certificate in our org
     @isTest private static void it_should_SetTheClientCertificate() {
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setClientCertificate('<certName>');
         Test.stopTest();
@@ -80,8 +80,8 @@ private class RestCalloutTestMVN {
     * @description tests setting the timeout for the httpRequest
     */
     @isTest private static void it_should_SetTheTimeOut() {
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setTimeout(1);
         Test.stopTest();
@@ -97,8 +97,8 @@ private class RestCalloutTestMVN {
     @isTest private static void it_should_SetAHeader() {
         String expectedHeaderName = 'headerName';
         String expectedHeaderValue = 'headerValue';
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setHeader(expectedHeaderName, expectedHeaderValue);
         Test.stopTest();
@@ -112,24 +112,24 @@ private class RestCalloutTestMVN {
     */
     @isTest private static void it_should_SetTheBody() {
         String expectedBody = 'body';
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
-        
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
+
         Test.startTest();
             actualRestCallout.setBody(expectedBody);
         Test.stopTest();
 
         System.assertEquals(expectedBody, actualRestCallout.httpRequest.getBody());
     }
-    
+
     /**
     * @description tests making a successful callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedSuccess() {
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
         String expectedResponseBody = 'success body';
-        RestMockMVN responseMock = new RestMockMVN(
+        RestMock* @group UUID responseMock = new RestMock* @group UUID(
             200,
-            RestLogBuilderMVN.STATUS_SUCCESS,
+            RestLogBuilder* @group UUID.STATUS_SUCCESS,
             expectedResponseBody,
             new Map<String, String>()
         );
@@ -146,12 +146,12 @@ private class RestCalloutTestMVN {
     * @description tests making a failed callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedFailure() {
-        RestCalloutMVN actualRestCallout = new RestCalloutMVN();
+        RestCallout* @group UUID actualRestCallout = new RestCallout* @group UUID();
         Integer expectedResponseStatus = 400;
         String expectedResponseBody = 'failure body';
-        RestMockMVN responseMock = new RestMockMVN(
+        RestMock* @group UUID responseMock = new RestMock* @group UUID(
             expectedResponseStatus,
-            RestLogBuilderMVN.STATUS_FAILURE,
+            RestLogBuilder* @group UUID.STATUS_FAILURE,
             expectedResponseBody,
             new Map<String, String>()
         );
@@ -164,7 +164,7 @@ private class RestCalloutTestMVN {
             } catch (CalloutException e) {
                 actualException = e;
             }
-            
+
         Test.stopTest();
 
         System.assert(actualException.getMessage().contains(String.valueOf(expectedResponseStatus)));

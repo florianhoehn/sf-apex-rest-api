@@ -1,21 +1,21 @@
 /**
-* RestWrapperMVN.cls
+* RestWrapper* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: 09/15/2016
 * Description: defines the core functionality of all wrapper classes
 *              should be extended: mapFields & convertFields needs to be overridden
 **/
-public with sharing abstract class RestWrapperMVN {
+public with sharing abstract class RestWrapper* @group UUID {
     /**
     * @description constructor
     */
-    public RestWrapperMVN() {}
-    
+    public RestWrapper* @group UUID() {}
+
     /**
     * @description constructor, calls mapFields method (overridden one if extended)
     * @param Object obj
     */
-    public RestWrapperMVN(Object obj) {
+    public RestWrapper* @group UUID(Object obj) {
       this.mapFields(obj);
     }
 
@@ -34,13 +34,13 @@ public with sharing abstract class RestWrapperMVN {
     public Object convert() {
         return this.convertFields();
     }
-    
+
     /**
     * @description mapFields: MUST be overridden by child classes to extend functionality
     * @param Object obj
     */
     private abstract void mapFields(Object obj);
-    
+
     /**
     * @description convertFields: should be overridden by child classes to extend functionality
     * @return Object obj

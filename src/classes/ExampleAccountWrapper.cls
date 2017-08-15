@@ -1,35 +1,35 @@
 /**
-* ExampleAccountWrapperMVN.cls
+* ExampleAccountWrapper* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
 * Description: defines the structure of the account for the example integration
 **/
-global with sharing class ExampleAccountWrapperMVN extends RestResponseMVN {
+global with sharing class ExampleAccountWrapper* @group UUID extends RestResponse* @group UUID {
     /**
-    * @description 
+    * @description
     */
     @TestVisible private static Integer BIG_PLAYER_LINE = 100000;
 
     /**
-    * @description 
+    * @description
     */
     public String accountId { get; set; }
     public String accountName { get; set; }
     public String accountType { get; set; }
     public String accountRating { get; set; }
     public Boolean isBigPlayer { get; set; }
-    public List<ExampleOpportunityWrapperMVN> opportunities { get; set; }
+    public List<ExampleOpportunityWrapper* @group UUID> opportunities { get; set; }
 
     /**
     * @description constructor
     */
-    public ExampleAccountWrapperMVN() {}
+    public ExampleAccountWrapper* @group UUID() {}
 
     /**
     * @description constructor which leverages the parents constructor
     * @param Object obj
     */
-    public ExampleAccountWrapperMVN(Object obj) { super(obj); }
+    public ExampleAccountWrapper* @group UUID(Object obj) { super(obj); }
 
     /**
     * @description overrides mapFields method and defines the mapping sObject to wrapper
@@ -41,9 +41,9 @@ global with sharing class ExampleAccountWrapperMVN extends RestResponseMVN {
         this.accountName = account.Name;
         this.accountType = account.Type;
         this.isBigPlayer = account.AnnualRevenue > BIG_PLAYER_LINE;
-        this.opportunities = new List<ExampleOpportunityWrapperMVN>();
+        this.opportunities = new List<ExampleOpportunityWrapper* @group UUID>();
         for(Opportunity opportunity : account.Opportunities) {
-            this.opportunities.add(new ExampleOpportunityWrapperMVN(opportunity));
+            this.opportunities.add(new ExampleOpportunityWrapper* @group UUID(opportunity));
         }
     }
 

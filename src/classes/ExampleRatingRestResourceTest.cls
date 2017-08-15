@@ -1,11 +1,11 @@
 /**
-* ExampleRatingRestResourceTestMVN.cls
+* ExampleRatingRestResourceTest* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 19th, 2017
-* Description: tests ExampleRatingRestResourceMVN
+* Description: tests ExampleRatingRestResource* @group UUID
 **/
 @isTest
-private class ExampleRatingRestResourceTestMVN {
+private class ExampleRatingRestResourceTest* @group UUID {
     /**
     * @description setup test data for this class
     */
@@ -33,11 +33,11 @@ private class ExampleRatingRestResourceTestMVN {
     */
     @isTest
     private static void it_should_GetAccountWithOpportunitiesSuccess() {
-        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
                                     LIMIT 1];
-        
+
         RestRequest req = new RestRequest();
         req.requestURI = '/services/apexrest/ratings/account/' + expectedAccount.Id;
         req.httpMethod = 'GET';
@@ -46,16 +46,16 @@ private class ExampleRatingRestResourceTestMVN {
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResourceMVN.getAccount();
+            ExampleRatingRestResource* @group UUID.getAccount();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapperMVN actualResponse = (ExampleAccountWrapperMVN)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapperMVN.class);
+        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
         System.assertEquals(true, actualResponse.success);
-        ExampleAccountWrapperTestMVN.assertAccountMappings(expectedAccount, actualResponse);
-        Rest_Log_MVN__c actuallog = [SELECT Id, Status_MVN__c FROM Rest_Log_MVN__c];
+        ExampleAccountWrapperTest* @group UUID.assertAccountMappings(expectedAccount, actualResponse);
+        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c FROM Rest_Log_* @group UUID__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilderMVN.STATUS_SUCCESS, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilder* @group UUID.STATUS_SUCCESS, actualLog.Status_* @group UUID__c);
     }
 
     /**
@@ -63,11 +63,11 @@ private class ExampleRatingRestResourceTestMVN {
     */
     @isTest
     private static void it_should_GetAccountFailure() {
-        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
                                     LIMIT 1];
-        
+
         RestRequest req = new RestRequest();
         req.requestURI = '/services/apexrest/ratings/account/' + expectedAccount.Id + 'FAIL';
         req.httpMethod = 'GET';
@@ -76,16 +76,16 @@ private class ExampleRatingRestResourceTestMVN {
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResourceMVN.getAccount();
+            ExampleRatingRestResource* @group UUID.getAccount();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapperMVN actualResponse = (ExampleAccountWrapperMVN)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapperMVN.class);
+        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
         System.assertEquals(false, actualResponse.success);
-        Rest_Log_MVN__c actuallog = [SELECT Id, Status_MVN__c, Error_Code_MVN__c FROM Rest_Log_MVN__c];
+        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c, Error_Code_* @group UUID__c FROM Rest_Log_* @group UUID__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals('GETACCOUNT', actualLog.Error_Code_MVN__c);
-        System.assertEquals(RestLogBuilderMVN.STATUS_FAILURE, actualLog.Status_MVN__c);
+        System.assertEquals('GETACCOUNT', actualLog.Error_Code_* @group UUID__c);
+        System.assertEquals(RestLogBuilder* @group UUID.STATUS_FAILURE, actualLog.Status_* @group UUID__c);
     }
 
     /**
@@ -93,7 +93,7 @@ private class ExampleRatingRestResourceTestMVN {
     */
     @isTest
     private static void it_should_UpdateRating() {
-        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
                                     LIMIT 1];
@@ -107,15 +107,15 @@ private class ExampleRatingRestResourceTestMVN {
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResourceMVN.updateRating();
+            ExampleRatingRestResource* @group UUID.updateRating();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapperMVN actualResponse = (ExampleAccountWrapperMVN)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapperMVN.class);
+        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
         System.assertEquals(true, actualResponse.success);
-        Rest_Log_MVN__c actuallog = [SELECT Id, Status_MVN__c FROM Rest_Log_MVN__c];
+        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c FROM Rest_Log_* @group UUID__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilderMVN.STATUS_SUCCESS, actualLog.Status_MVN__c);
+        System.assertEquals(RestLogBuilder* @group UUID.STATUS_SUCCESS, actualLog.Status_* @group UUID__c);
         Account actualAccount = [SELECT Rating
                                    FROM Account
                                   WHERE Id = :expectedAccount.Id];
@@ -127,7 +127,7 @@ private class ExampleRatingRestResourceTestMVN {
     */
     @isTest
     private static void it_should_UpdateRatingFailure() {
-        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating, 
+        Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
                                     LIMIT 1];
@@ -141,16 +141,16 @@ private class ExampleRatingRestResourceTestMVN {
         RestContext.response = res;
 
         Test.startTest();
-            ExampleRatingRestResourceMVN.updateRating();
+            ExampleRatingRestResource* @group UUID.updateRating();
         Test.stopTest();
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
-        ExampleAccountWrapperMVN actualResponse = (ExampleAccountWrapperMVN)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapperMVN.class);
+        ExampleAccountWrapper* @group UUID actualResponse = (ExampleAccountWrapper* @group UUID)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper* @group UUID.class);
         System.assertEquals(false, actualResponse.success);
-        Rest_Log_MVN__c actuallog = [SELECT Id, Status_MVN__c, Error_Code_MVN__c FROM Rest_Log_MVN__c];
+        Rest_Log_* @group UUID__c actuallog = [SELECT Id, Status_* @group UUID__c, Error_Code_* @group UUID__c FROM Rest_Log_* @group UUID__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals('PUTACCOUNT', actualLog.Error_Code_MVN__c);
-        System.assertEquals(RestLogBuilderMVN.STATUS_FAILURE, actualLog.Status_MVN__c);
+        System.assertEquals('PUTACCOUNT', actualLog.Error_Code_* @group UUID__c);
+        System.assertEquals(RestLogBuilder* @group UUID.STATUS_FAILURE, actualLog.Status_* @group UUID__c);
     }
 
 }

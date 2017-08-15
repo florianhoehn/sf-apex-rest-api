@@ -1,12 +1,12 @@
 /**
-* ExampleOpportunityWrapperMVN.cls
+* ExampleOpportunityWrapper* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
 * Description: defines the structure of the opportunity for the example integration
 **/
-global with sharing class ExampleOpportunityWrapperMVN extends RestWrapperMVN {
+global with sharing class ExampleOpportunityWrapper* @group UUID extends RestWrapper* @group UUID {
     /**
-    * @description 
+    * @description
     */
     public String opportunityId { get; set; }
     public String opportunityName { get; set; }
@@ -17,7 +17,7 @@ global with sharing class ExampleOpportunityWrapperMVN extends RestWrapperMVN {
     * @description constructor which leverages the parents constructor
     * @param Object obj
     */
-    public ExampleOpportunityWrapperMVN(Object obj) { super(obj); }
+    public ExampleOpportunityWrapper* @group UUID(Object obj) { super(obj); }
 
     /**
     * @description overrides mapFields method and defines the mapping sObject to wrapper

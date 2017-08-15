@@ -1,10 +1,10 @@
 /**
-* RestCalloutMVN.cls
+* RestCallout* @group UUID.cls
 * Created By: Florian Hoehn
 * Created On: January 17th, 2017
 * Description: defines the core functionality of callouts - should be extended for each specific callout
 **/
-public with sharing virtual class RestCalloutMVN {
+public with sharing virtual class RestCallout* @group UUID {
     /**
     * @description defines max timeout
     */
@@ -14,11 +14,11 @@ public with sharing virtual class RestCalloutMVN {
     * @description defines httpRequest for the callout
     */
     @TestVisible protected HttpRequest httpRequest;
-    
+
     /**
     * @description constructor, initiates httpRequest and number of tries
     */
-    public RestCalloutMVN() {
+    public RestCallout* @group UUID() {
         this.createHttpRequest();
     }
 
@@ -87,7 +87,7 @@ public with sharing virtual class RestCalloutMVN {
     @TestVisible protected String call() {
         Http http = new Http();
         HttpResponse httpResponse = http.send(this.httpRequest);
-        if(httpResponse.getStatusCode() != 200) {      
+        if(httpResponse.getStatusCode() != 200) {
             throw new System.CalloutException('Status Code: ' + httpResponse.getStatusCode() + ' : ' + httpResponse.getBody());
         }
         return httpResponse.getBody();

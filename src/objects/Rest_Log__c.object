@@ -53,7 +53,7 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>Endpoint_MVN__c</fullName>
+        <fullName>Endpoint__c</fullName>
         <description>Holds the endpoint of the log</description>
         <externalId>false</externalId>
         <label>Endpoint</label>
@@ -64,7 +64,7 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Error_Code_MVN__c</fullName>
+        <fullName>Error_Code__c</fullName>
         <description>Holds the error code</description>
         <externalId>false</externalId>
         <label>Error Code</label>
@@ -75,7 +75,7 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Message_MVN__c</fullName>
+        <fullName>Message__c</fullName>
         <description>Holds the error message</description>
         <externalId>false</externalId>
         <label>Message</label>
@@ -85,7 +85,7 @@
         <visibleLines>10</visibleLines>
     </fields>
     <fields>
-        <fullName>Request_Body_MVN__c</fullName>
+        <fullName>Request_Body__c</fullName>
         <description>Holds the body of the request</description>
         <externalId>false</externalId>
         <label>Request Body</label>
@@ -95,7 +95,7 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Response_Body_MVN__c</fullName>
+        <fullName>Response_Body__c</fullName>
         <description>Holds the response of the rest callout</description>
         <externalId>false</externalId>
         <label>Response Body</label>
@@ -105,7 +105,7 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Stack_Trace_MVN__c</fullName>
+        <fullName>Stack_Trace__c</fullName>
         <description>Holds the stack trace</description>
         <externalId>false</externalId>
         <label>Stack Trace</label>
@@ -115,7 +115,7 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Status_MVN__c</fullName>
+        <fullName>Status__c</fullName>
         <description>Holds the status of the log</description>
         <externalId>false</externalId>
         <label>Status</label>
@@ -141,10 +141,10 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>Endpoint_MVN__c</columns>
-        <columns>Status_MVN__c</columns>
-        <columns>Error_Code_MVN__c</columns>
-        <columns>Message_MVN__c</columns>
+        <columns>Endpoint__c</columns>
+        <columns>Status__c</columns>
+        <columns>Error_Code__c</columns>
+        <columns>Message__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
