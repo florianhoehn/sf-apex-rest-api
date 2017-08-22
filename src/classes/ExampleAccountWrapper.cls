@@ -8,7 +8,7 @@ global with sharing class ExampleAccountWrapper extends RestResponse {
     /**
     * @description
     */
-    @TestVisible private static Integer BIG_PLAYER_LINE = 100000;
+    @TestVisible private final static Integer BIGPLAYERLINE = 100000;
 
     /**
     * @description
@@ -40,7 +40,7 @@ global with sharing class ExampleAccountWrapper extends RestResponse {
         this.accountId = account.Id;
         this.accountName = account.Name;
         this.accountType = account.Type;
-        this.isBigPlayer = account.AnnualRevenue > BIG_PLAYER_LINE;
+        this.isBigPlayer = account.AnnualRevenue > BIGPLAYERLINE;
         this.opportunities = new List<ExampleOpportunityWrapper>();
         for(Opportunity opportunity : account.Opportunities) {
             this.opportunities.add(new ExampleOpportunityWrapper(opportunity));

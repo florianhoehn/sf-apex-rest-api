@@ -82,7 +82,7 @@ public class ExampleAccountWrapperTest {
         System.assertEquals(account.Name, wrapper.accountName);
         System.assertEquals(account.Type, wrapper.accountType);
         if(wrapper.isBigPlayer != null) {
-            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper.BIG_PLAYER_LINE, wrapper.isBigPlayer);
+            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper.BIGPLAYERLINE, wrapper.isBigPlayer);
         }
         System.assertEquals(account.Rating, wrapper.accountRating);
         for(Integer counter = 0; counter < account.Opportunities.size(); counter++) {
