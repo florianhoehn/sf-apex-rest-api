@@ -1,7 +1,0 @@
-engines:
- apexmetrics:
-        enabled: true
-ratings:
-    paths:
-        - "**.cls"
-        - "**.trigger"
