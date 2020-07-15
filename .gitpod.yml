@@ -7,7 +7,6 @@ tasks:
 vscode:
   extensions:
     - aaron-bond.better-comments@2.0.5:WAzJGO7Vb3JPqZ/xhShsZA==
-    - CoenraadS.bracket-pair-colorizer-2@0.1.4:+JUeb/jFYZt2/0MS/gUllA==
     - salesforce.salesforcedx-vscode-apex-replay-debugger@48.24.0:R5VhDe48TNGsOsovPcYRMQ==
     - salesforce.salesforcedx-vscode-apex-debugger@48.24.0:BVUyqSEcsiBc2pSWAasT6w==
     - salesforce.salesforcedx-vscode-visualforce@48.24.0:Pk1RPVtCU2yI3iW+58hrKA==
