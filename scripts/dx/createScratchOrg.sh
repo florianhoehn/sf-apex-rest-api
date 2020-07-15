@@ -8,3 +8,7 @@ config=${3:-config/scratch-org-definition.json}
 echo ${bold}Create Scratch Org: $alias${normal}
 sfdx force:org:create --definitionfile $config --setalias $alias --setdefaultusername --durationdays $duration --targetdevhubusername DEVHUB
 echo -e
+
+echo ${bold}Push repository: $alias${normal}
+sfdx force:source:push --forceoverwrite --targetusername $alias --wait 10
+echo -e
