@@ -12,6 +12,11 @@ public with sharing virtual class RestResponse extends RestWrapper{
         public String message { get; set; }
 
         /**
+        * empty constructor
+        */
+        public RestError() {}
+
+        /**
         * constructor which leverages the parents constructor
         * @param String errorCode
         * @param String message
