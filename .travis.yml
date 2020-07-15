@@ -49,7 +49,7 @@ jobs:
           - $HOME/.sfdx
           - assets
     install:
-      - bash scripts/commandGitpod.sh
+      - bash scripts/installSFDXAndAutorizeDevhub.sh
     script:
       - sfdx force:org:create --definitionfile config/project-scratch-def.json --setalias CI --setdefaultusername --durationdays 1 --targetdevhubusername DEVHUB
 
