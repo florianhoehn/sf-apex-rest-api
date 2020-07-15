@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/florianhoehn/sf-apex-rest-api)
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f3b49a10ff0e49428cca7bf5ed25e66d)](https://app.codacy.com/app/florianhoehn/sf-apex-rest-api?utm_source=github.com&utm_medium=referral&utm_content=florianhoehn/sf-apex-rest-api&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/florianhoehn/sf-apex-rest-api.svg?branch=master)](https://travis-ci.org/florianhoehn/sf-apex-rest-api)
 [![Code Climate](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/badges/gpa.svg)](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api)
