@@ -1,19 +1,17 @@
 /**
-* ExampleRatingCallout.cls
-* Created By: Florian Hoehn
-* Created On: January 18th, 2017
-* Description: defines the specific callout for the example integration to receive rating information
-*              defines calls for this callout from the process builder, batch jobs and an @future call
+* @author Florian Hoehn
+* defines the specific callout for the example integration to receive rating information
+* defines calls for this callout from the process builder, batch jobs and an @future call
 **/
 public with sharing class ExampleRatingCallout extends RestCallout {
     @TestVisible private static String EXCEPTIONTEXT = 'Example Standard Error Message';
     /**
-    * @description holds the account record which the callout is made from
+    * holds the account record which the callout is made from
     */
     private Account account;
 
     /**
-    * @description constructor
+    * constructor
     * @param Account account
     */
     public ExampleRatingCallout(Account account) {
@@ -21,7 +19,7 @@ public with sharing class ExampleRatingCallout extends RestCallout {
     }
 
     /**
-    * @description send the account with opportunities to rating engine
+    * send the account with opportunities to rating engine
     */
     public void sendAccountToRatingEngine() {
         RestLogBuilder logBuilder = new RestLogBuilder();
@@ -58,7 +56,7 @@ public with sharing class ExampleRatingCallout extends RestCallout {
     }
 
     /**
-    * @description callout batch accounts called by @future and batch
+    * callout batch accounts called by @future and batch
     * @param Set<Id> accountIds
     */
     public static void sendBatchOfAccounts(Set<Id> accountIds) {
@@ -72,7 +70,7 @@ public with sharing class ExampleRatingCallout extends RestCallout {
     }
 
     /**
-    * @description method that can be called by a process builder - schedules future calls to do the example callout
+    * method that can be called by a process builder - schedules future calls to do the example callout
     *              splits the list into chunks of 100 to circumvent governer limits (turn the process off for data migrations)
     * @param List<Id> accountIds
     */
@@ -89,7 +87,7 @@ public with sharing class ExampleRatingCallout extends RestCallout {
     }
 
     /**
-    * @description future method to do the actual callout
+    * future method to do the actual callout
     * @param Set<Id> accountIds
     */
     @future(callout=true)

@@ -1,13 +1,11 @@
 /**
-* ExampleOpportunityWrapperTest.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: tests ExampleOpportunityWrapper
+* @author Florian Hoehn
+* tests ExampleOpportunityWrapper
 **/
 @isTest
 public class ExampleOpportunityWrapperTest {
     /**
-    * @description setup test data for this class
+    * setup test data for this class
     */
     @testSetup
     private static void setupTestData() {
@@ -21,7 +19,7 @@ public class ExampleOpportunityWrapperTest {
     }
 
     /**
-    * @description tests opportunity sObject to opportunity wrapper mapping
+    * tests opportunity sObject to opportunity wrapper mapping
     */
     @isTest
     private static void it_should_MapOpportunityToWrapper() {
@@ -35,7 +33,7 @@ public class ExampleOpportunityWrapperTest {
     }
 
     /**
-    * @description asserts opportunity sObject mapping to opportunity wrapper
+    * asserts opportunity sObject mapping to opportunity wrapper
     * @param Opportunity Opportunity
     * @param ExampleOpportunityWrapper wrapper
     */

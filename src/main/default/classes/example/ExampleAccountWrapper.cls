@@ -1,8 +1,6 @@
 /**
-* ExampleAccountWrapper.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: defines the structure of the account for the example integration
+* @author Florian Hoehn
+* defines the structure of the account for the example integration
 **/
 public with sharing class ExampleAccountWrapper extends RestResponse {
     /**
@@ -21,19 +19,19 @@ public with sharing class ExampleAccountWrapper extends RestResponse {
     public List<ExampleOpportunityWrapper> opportunities { get; set; }
 
     /**
-    * @description constructor
+    * constructor
     */
     @SuppressWarnings('PMD.EmptyStatementBlock')
     public ExampleAccountWrapper() {}
 
     /**
-    * @description constructor which leverages the parents constructor
+    * constructor which leverages the parents constructor
     * @param Object obj
     */
     public ExampleAccountWrapper(Object obj) { super(obj); }
 
     /**
-    * @description overrides mapFields method and defines the mapping sObject to wrapper
+    * overrides mapFields method and defines the mapping sObject to wrapper
     * @param Object obj
     */
     private void mapFields(Object obj) {
@@ -49,7 +47,7 @@ public with sharing class ExampleAccountWrapper extends RestResponse {
     }
 
     /**
-    * @description overrides mapFields method and defines the mapping wrapper to sObject
+    * overrides mapFields method and defines the mapping wrapper to sObject
     * @param Object obj
     */
     private Object convertFields() {

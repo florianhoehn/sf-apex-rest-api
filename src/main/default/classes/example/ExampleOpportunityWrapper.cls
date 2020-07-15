@@ -1,8 +1,6 @@
 /**
-* ExampleOpportunityWrapper.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: defines the structure of the opportunity for the example integration
+* @author Florian Hoehn
+* defines the structure of the opportunity for the example integration
 **/
 public with sharing class ExampleOpportunityWrapper extends RestWrapper {
     /**
@@ -14,13 +12,13 @@ public with sharing class ExampleOpportunityWrapper extends RestWrapper {
     public Integer opportunityAmount { get; set; }
 
     /**
-    * @description constructor which leverages the parents constructor
+    * constructor which leverages the parents constructor
     * @param Object obj
     */
     public ExampleOpportunityWrapper(Object obj) { super(obj); }
 
     /**
-    * @description overrides mapFields method and defines the mapping sObject to wrapper
+    * overrides mapFields method and defines the mapping sObject to wrapper
     * @param Object obj
     */
     private void mapFields(Object obj) {

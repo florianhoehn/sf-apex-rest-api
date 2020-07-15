@@ -1,13 +1,11 @@
 /**
-* ExampleAccountWrapperTest.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: tests ExampleAccountWrapper
+* @author Florian Hoehn
+* tests ExampleAccountWrapper
 **/
 @isTest
 public class ExampleAccountWrapperTest {
     /**
-    * @description setup test data for this class
+    * setup test data for this class
     */
     @testSetup
     private static void setupTestData() {
@@ -29,7 +27,7 @@ public class ExampleAccountWrapperTest {
     }
 
     /**
-    * @description tests account sObject to account wrapper mapping for callout
+    * tests account sObject to account wrapper mapping for callout
     */
     @isTest
     private static void it_should_MapAccountToWrapper() {
@@ -46,7 +44,7 @@ public class ExampleAccountWrapperTest {
     }
 
     /**
-    * @description tests account wrapper to account sObject conversion for callout response
+    * tests account wrapper to account sObject conversion for callout response
     */
     @isTest
     private static void it_should_ConvertWrapperToAccount() {
@@ -61,7 +59,7 @@ public class ExampleAccountWrapperTest {
     }
 
     /**
-    * @description creates account wrapper
+    * creates account wrapper
     * @param Id accountId
     * @return ￼ExampleAccountWrapper wrapper
     */
@@ -73,7 +71,7 @@ public class ExampleAccountWrapperTest {
     }
 
     /**
-    * @description asserts account sObject mapping to account wrapper
+    * asserts account sObject mapping to account wrapper
     * @param Account account
     * @param ExampleAccountWrapper wrapper
     */

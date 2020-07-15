@@ -1,8 +1,6 @@
 /**
-* ExampleRatingCalloutTest.cls
-* Created By: Florian Hoehn
-* Created On: January 18th, 2017
-* Description: Test class for ExampleRatingCallout
+* @author Florian Hoehn
+* tests ExampleRatingCallout
 **/
 @isTest
 private class ExampleRatingCalloutTest {
@@ -11,7 +9,7 @@ private class ExampleRatingCalloutTest {
     private static String expectedResponseBodyFailure = '{"success":false,"errors":[{"errorCode":"{0}","message":"{1}"}]}';
 
     /**
-    * @description setup test data for this class
+    * setup test data for this class
     */
     @testSetup
     private static void setupTestData() {
@@ -33,7 +31,7 @@ private class ExampleRatingCalloutTest {
     }
 
     /**
-    * @description tests making a successful callout
+    * tests making a successful callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
@@ -64,7 +62,7 @@ private class ExampleRatingCalloutTest {
     }
 
     /**
-    * @description tests making a successful callout via the invoker (process builder)
+    * tests making a successful callout via the invoker (process builder)
     */
     @isTest private static void it_should_DoACalloutByInvokerWithReturnedRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
@@ -94,7 +92,7 @@ private class ExampleRatingCalloutTest {
     }
 
     /**
-    * @description tests making a failed callout
+    * tests making a failed callout
     */
     @isTest private static void it_should_DoACalloutWithErrorReturned() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
@@ -126,7 +124,7 @@ private class ExampleRatingCalloutTest {
     }
 
     /**
-    * @description tests making a failed callout without error message being sent by endpoint
+    * tests making a failed callout without error message being sent by endpoint
     */
     @isTest private static void it_should_DoACalloutWithStandardErrorReturned() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,

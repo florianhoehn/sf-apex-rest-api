@@ -1,29 +1,27 @@
 /**
-* RestCallout.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: defines the core functionality of callouts - should be extended for each specific callout
+* @author Florian Hoehn
+* defines the core functionality of callouts - should be extended for each specific callout
 **/
 public with sharing virtual class RestCallout {
     /**
-    * @description defines max timeout
+    * defines max timeout
     */
     @TestVisible private Integer MAXTIMEOUT = 120000;
 
     /**
-    * @description defines httpRequest for the callout
+    * defines httpRequest for the callout
     */
     @TestVisible protected HttpRequest httpRequest;
 
     /**
-    * @description constructor, initiates httpRequest and number of tries
+    * constructor, initiates httpRequest and number of tries
     */
     public RestCallout() {
         this.createHttpRequest();
     }
 
     /**
-    * @description sets method
+    * sets method
     * @param String method
     */
     @TestVisible protected void setMethod(String method) {
@@ -31,7 +29,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description sets endpoint
+    * sets endpoint
     * @param String endpoint
     */
     @TestVisible protected void setEndpoint(String endpoint) {
@@ -39,7 +37,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description sets endpoint
+    * sets endpoint
     * @param String namedCredential
     */
     @TestVisible protected void setNamedCredential(String namedCredential) {
@@ -47,7 +45,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description sets client certificate
+    * sets client certificate
     * @param String certificateName
     */
     @TestVisible protected void setClientCertificate(String certificateName) {
@@ -55,7 +53,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description sets timeout
+    * sets timeout
     * @param Integer timeout
     */
     @TestVisible protected void setTimeout(Integer timeout) {
@@ -63,7 +61,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description set header
+    * set header
     * @param String headerName
     * @param String headerValue
     */
@@ -73,7 +71,7 @@ public with sharing virtual class RestCallout {
 
 
     /**
-    * @description sets JSON body
+    * sets JSON body
     * @param String requestBody
     */
     @TestVisible protected void setBody(String requestBody) {
@@ -81,7 +79,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description do the actual callout
+    * do the actual callout
     * @return String requestBody
     */
     @TestVisible protected String call() {
@@ -94,7 +92,7 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description initialises the httpRequest with all default headers
+    * initialises the httpRequest with all default headers
     * we can move anything that is the same for all callouts in here i.e. endpoint, method, certificate, timeout, content-type
     */
     protected void createHttpRequest() {

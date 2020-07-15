@@ -1,13 +1,11 @@
 /**
-* RestLogBuilderTest.cls
-* Created By: Florian Hoehn
-* Created On: January 16th, 2017
-* Description: tests RestLogBuilder
+* @author Florian Hoehn
+* tests RestLogBuilder
 **/
 @isTest
 private class RestLogBuilderTest {
     /**
-    * @description tests successful log which does not get inserted as the log level is set to failure.
+    * tests successful log which does not get inserted as the log level is set to failure.
     */
     @isTest
     private static void it_should_return_SuccessLogRecord_NotInserted() {
@@ -33,7 +31,7 @@ private class RestLogBuilderTest {
     }
 
     /**
-    * @description tests successful log which does get inserted
+    * tests successful log which does get inserted
     */
     @isTest
     private static void it_should_return_SuccessLogRecord_Inserted() {
@@ -58,7 +56,7 @@ private class RestLogBuilderTest {
     }
 
     /**
-    * @description tests failure log which gets inserted
+    * tests failure log which gets inserted
     */
     @isTest
     private static void it_should_return_FailureLogRecord_Inserted() {
