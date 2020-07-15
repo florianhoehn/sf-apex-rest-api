@@ -6,7 +6,7 @@ public with sharing virtual class RestCallout {
     /**
     * defines max timeout
     */
-    @TestVisible private Integer MAXTIMEOUT = 120000;
+    @TestVisible private Integer maxTimeout = 120000;
 
     /**
     * defines httpRequest for the callout
@@ -97,7 +97,7 @@ public with sharing virtual class RestCallout {
     */
     protected void createHttpRequest() {
         this.httpRequest = new HttpRequest();
-        this.httpRequest.setTimeout(MAXTIMEOUT);
+        this.httpRequest.setTimeout(maxTimeout);
         this.httpRequest.setHeader('Content-Type', 'application/json');
     }
 }

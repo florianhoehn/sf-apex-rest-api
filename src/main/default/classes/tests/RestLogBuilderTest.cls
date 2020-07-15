@@ -64,8 +64,8 @@ private class RestLogBuilderTest {
         String expectedRequestBody = 'expected request Body';
         String expectedResponseBody = 'expected request Body';
         String expectedErrorCode = '400';
-        String expectedExceptionText = 'expected exception message';
-        JSONException expecedJsonEx = new JSONException(expectedExceptionText);
+        String expectedexceptionText = 'expected exception message';
+        JSONException expecedJsonEx = new JSONException(expectedexceptionText);
 
         Test.startTest();
             RestLogBuilder logBuilder = new RestLogBuilder();
@@ -84,7 +84,7 @@ private class RestLogBuilderTest {
         System.assertEquals(expectedResponseBody, actualLog.Response_Body__c);
         System.assertEquals(expectedResponseBody, actualLog.Response_Body__c);
         System.assertEquals(expectedErrorCode, actualLog.Error_Code__c);
-        System.assertEquals(expectedExceptionText, actualLog.Message__c);
+        System.assertEquals(expectedexceptionText, actualLog.Message__c);
         System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 }
