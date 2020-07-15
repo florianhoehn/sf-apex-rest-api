@@ -1,0 +1,18 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: 'echo "TODO: Replace with init/build command"'
+    command: 'echo "TODO: Replace with command to start project"'
+vscode:
+  extensions:
+    - aaron-bond.better-comments@2.0.5:WAzJGO7Vb3JPqZ/xhShsZA==
+    - CoenraadS.bracket-pair-colorizer-2@0.1.4:+JUeb/jFYZt2/0MS/gUllA==
+    - salesforce.salesforcedx-vscode-apex-replay-debugger@48.24.0:R5VhDe48TNGsOsovPcYRMQ==
+    - salesforce.salesforcedx-vscode-apex-debugger@48.24.0:BVUyqSEcsiBc2pSWAasT6w==
+    - salesforce.salesforcedx-vscode-visualforce@48.24.0:Pk1RPVtCU2yI3iW+58hrKA==
+    - chuckjonas.apex-pmd@0.5.0:YRBcYKweqwBonvFyJfYdEA==
+    - salesforce.salesforcedx-vscode-apex@48.24.0:utD8wMq0gT6YKufcGIgcdA==
+    - salesforce.salesforcedx-vscode-core@48.24.0:bMdKEv1Qx1glD47vLU+bhw==
+    - salesforce.salesforcedx-vscode-lightning@48.24.0:DsygM2X6+jJMcfnXdDJ8NQ==
+    - salesforce.salesforcedx-vscode-lwc@48.24.0:WDKUhDh3JVYx2nv64qp3Kg==
