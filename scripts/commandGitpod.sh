@@ -1,0 +1,1 @@
+- command: echo "$DEVHUBKEY" > config/devhub-server.key
