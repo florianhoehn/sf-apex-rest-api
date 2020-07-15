@@ -4,7 +4,7 @@
 * Created On: January 17th, 2017
 * Description: defines the structure of callout responses aligned with SF standard
 **/
-global with sharing virtual class RestResponse extends RestWrapper{
+public with sharing virtual class RestResponse extends RestWrapper{
     /**
     * @group integration
     * @description defines the structure of integration errors
@@ -12,11 +12,6 @@ global with sharing virtual class RestResponse extends RestWrapper{
     public with sharing class RestError {
         public String errorCode { get; set; }
         public String message { get; set; }
-
-        /**
-        * @description constructor
-        */
-        public RestError() {}
 
         /**
         * @description constructor which leverages the parents constructor

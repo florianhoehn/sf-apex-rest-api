@@ -51,7 +51,8 @@ global with sharing class ExampleRatingRestResource {
         RestLogBuilder logBuilder = new RestLogBuilder();
         RestResponse response = new RestResponse();
         Account accountToUpdate;
-        String requestBody, responseBody;
+        String requestBody;
+        String responseBody;
         try{
             requestBody = RestContext.request.requestBody.toString();
             ExampleAccountWrapper accountWrapper = (ExampleAccountWrapper)JSON.deserialize(requestBody, ExampleAccountWrapper.class);

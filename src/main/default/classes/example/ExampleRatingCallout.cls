@@ -6,7 +6,7 @@
 *              defines calls for this callout from the process builder, batch jobs and an @future call
 **/
 public with sharing class ExampleRatingCallout extends RestCallout {
-    @TestVisible private static String EXCEPTION_TEXT = 'Example Standard Error Message';
+    @TestVisible private static String EXCEPTIONTEXT = 'Example Standard Error Message';
     /**
     * @description holds the account record which the callout is made from
     */
@@ -42,8 +42,8 @@ public with sharing class ExampleRatingCallout extends RestCallout {
                     errorCode = wrapper.errors.get(0).errorCode;
                     throw new System.CalloutException(wrapper.errors.get(0).message);
                 } else {
-                    errorCode = EXCEPTION_TEXT;
-                    throw new System.CalloutException(EXCEPTION_TEXT);
+                    errorCode = EXCEPTIONTEXT;
+                    throw new System.CalloutException(EXCEPTIONTEXT);
                 }
             }
         } catch(Exception e) {

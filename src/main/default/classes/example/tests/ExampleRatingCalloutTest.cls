@@ -148,8 +148,8 @@ private class ExampleRatingCalloutTest {
 
         Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(ExampleRatingCallout.EXCEPTION_TEXT, actualLog.Error_Code__c);
-        System.assertEquals(ExampleRatingCallout.EXCEPTION_TEXT, actualLog.Message__c);
+        System.assertEquals(ExampleRatingCallout.EXCEPTIONTEXT, actualLog.Error_Code__c);
+        System.assertEquals(ExampleRatingCallout.EXCEPTIONTEXT, actualLog.Message__c);
         System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 }

@@ -4,7 +4,7 @@
 * Created On: January 17th, 2017
 * Description: defines the structure of the opportunity for the example integration
 **/
-global with sharing class ExampleOpportunityWrapper extends RestWrapper {
+public with sharing class ExampleOpportunityWrapper extends RestWrapper {
     /**
     * @description
     */

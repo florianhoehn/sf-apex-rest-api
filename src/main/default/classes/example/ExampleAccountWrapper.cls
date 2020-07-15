@@ -4,7 +4,7 @@
 * Created On: January 17th, 2017
 * Description: defines the structure of the account for the example integration
 **/
-global with sharing class ExampleAccountWrapper extends RestResponse {
+public with sharing class ExampleAccountWrapper extends RestResponse {
     /**
     * @description
     */
@@ -23,6 +23,7 @@ global with sharing class ExampleAccountWrapper extends RestResponse {
     /**
     * @description constructor
     */
+    @SuppressWarnings('PMD.EmptyStatementBlock')
     public ExampleAccountWrapper() {}
 
     /**
