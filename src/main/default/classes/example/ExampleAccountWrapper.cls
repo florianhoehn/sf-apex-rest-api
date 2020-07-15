@@ -6,7 +6,8 @@ public with sharing class ExampleAccountWrapper extends RestResponse {
     /**
     * @description
     */
-    @TestVisible private final static Integer BIGPLAYERLINE = 100000;
+    @TestVisible
+    private final static Integer BIGPLAYERLINE = 100000;
 
     /**
     * @description

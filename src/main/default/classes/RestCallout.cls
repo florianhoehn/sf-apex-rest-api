@@ -6,12 +6,14 @@ public with sharing virtual class RestCallout {
     /**
     * defines max timeout
     */
-    @TestVisible private Integer maxTimeout = 120000;
+    @TestVisible
+    private Integer maxTimeout = 120000;
 
     /**
     * defines httpRequest for the callout
     */
-    @TestVisible protected HttpRequest httpRequest;
+    @TestVisible
+    protected HttpRequest httpRequest;
 
     /**
     * constructor, initiates httpRequest and number of tries
@@ -24,7 +26,8 @@ public with sharing virtual class RestCallout {
     * sets method
     * @param String method
     */
-    @TestVisible protected void setMethod(String method) {
+    @TestVisible
+    protected void setMethod(String method) {
         this.httpRequest.setMethod(method);
     }
 
@@ -32,7 +35,8 @@ public with sharing virtual class RestCallout {
     * sets endpoint
     * @param String endpoint
     */
-    @TestVisible protected void setEndpoint(String endpoint) {
+    @TestVisible
+    protected void setEndpoint(String endpoint) {
         this.httpRequest.setEndpoint(endpoint);
     }
 
@@ -40,7 +44,8 @@ public with sharing virtual class RestCallout {
     * sets endpoint
     * @param String namedCredential
     */
-    @TestVisible protected void setNamedCredential(String namedCredential) {
+    @TestVisible
+    protected void setNamedCredential(String namedCredential) {
         this.httpRequest.setEndpoint('callout:' + namedCredential);
     }
 
@@ -48,7 +53,8 @@ public with sharing virtual class RestCallout {
     * sets client certificate
     * @param String certificateName
     */
-    @TestVisible protected void setClientCertificate(String certificateName) {
+    @TestVisible
+    protected void setClientCertificate(String certificateName) {
         this.httpRequest.setClientCertificateName(certificateName);
     }
 
@@ -56,7 +62,8 @@ public with sharing virtual class RestCallout {
     * sets timeout
     * @param Integer timeout
     */
-    @TestVisible protected void setTimeout(Integer timeout) {
+    @TestVisible
+    protected void setTimeout(Integer timeout) {
         this.httpRequest.setTimeout(timeout);
     }
 
@@ -65,7 +72,8 @@ public with sharing virtual class RestCallout {
     * @param String headerName
     * @param String headerValue
     */
-    @TestVisible protected void setHeader(String headerName, String headerValue) {
+    @TestVisible
+    protected void setHeader(String headerName, String headerValue) {
         this.httpRequest.setHeader(headerName, headerValue);
     }
 
@@ -74,7 +82,8 @@ public with sharing virtual class RestCallout {
     * sets JSON body
     * @param String requestBody
     */
-    @TestVisible protected void setBody(String requestBody) {
+    @TestVisible
+    protected void setBody(String requestBody) {
         this.httpRequest.setBody(requestBody);
     }
 
@@ -82,7 +91,8 @@ public with sharing virtual class RestCallout {
     * do the actual callout
     * @return String requestBody
     */
-    @TestVisible protected String call() {
+    @TestVisible
+    protected String call() {
         Http http = new Http();
         HttpResponse httpResponse = http.send(this.httpRequest);
         if(httpResponse.getStatusCode() != 200) {

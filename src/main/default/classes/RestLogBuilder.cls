@@ -6,17 +6,22 @@ public with sharing class RestLogBuilder {
     /**
     * Constants used in the log builder
     */
-    @TestVisible private static final String LOG_LEVEL_ALL = 'All';
-    @TestVisible private static final String LOG_LEVEL_FAILURE = 'Failure';
-    @TestVisible private static final String STATUS_SUCCESS = 'Success';
-    @TestVisible private static final String STATUS_FAILURE = 'Failure';
+    @TestVisible
+    private static final String LOG_LEVEL_ALL = 'All';
+    @TestVisible
+    private static final String LOG_LEVEL_FAILURE = 'Failure';
+    @TestVisible
+    private static final String STATUS_SUCCESS = 'Success';
+    @TestVisible
+    private static final String STATUS_FAILURE = 'Failure';
     private static final Integer TEXT_MAX_NUMBER_CHARS = 255;
     private static final Integer TEXTAREA_MAX_NUMBER_CHARS = 131072;
 
     /**
     * defines log level (create a setting for this)
     */
-    @TestVisible private String logLevel = LOG_LEVEL_ALL;
+    @TestVisible
+    private String logLevel = LOG_LEVEL_ALL;
 
     /**
     * defines log record that will be inserted or logged out

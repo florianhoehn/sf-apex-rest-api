@@ -4,7 +4,8 @@
 * defines calls for this callout from the process builder, batch jobs and an @future call
 **/
 public with sharing class ExampleRatingCallout extends RestCallout {
-    @TestVisible private static String exceptionText = 'Example Standard Error Message';
+    @TestVisible
+    private static String exceptionText = 'Example Standard Error Message';
     /**
     * holds the account record which the callout is made from
     */
