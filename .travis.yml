@@ -48,7 +48,6 @@ jobs:
         paths:
           - sfdx
           - $HOME/.sfdx
-          - assets
     install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:org:create --definitionfile config/project-scratch-def.json --setalias CI --setdefaultusername --durationdays 1 --targetdevhubusername DEVHUB
 
