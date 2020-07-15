@@ -25,9 +25,10 @@ jobs:
     workspaces:
       create:
         name: pmd
-        paths:
-          - pmd-bin-6.16.0
-    script: bash scripts/ci/installPMD.sh
+        paths: pmd-bin-6.16.0
+    script: 
+      - wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.16.0/pmd-bin-6.16.0.zip
+      - unzip -o pmd-bin-6.16.0.zip
 
   - stage: Execute Static Code Analysis
     name: Run pmd
@@ -48,24 +49,21 @@ jobs:
           - sfdx
           - $HOME/.sfdx
           - assets
-    install:
-      - bash scripts/installSFDXAndAutorizeDevhub.sh
-    script:
-      - sfdx force:org:create --definitionfile config/project-scratch-def.json --setalias CI --setdefaultusername --durationdays 1 --targetdevhubusername DEVHUB
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    script: sfdx force:org:create --definitionfile config/project-scratch-def.json --setalias CI --setdefaultusername --durationdays 1 --targetdevhubusername DEVHUB
 
   - stage: Push
     name: Push Metadata
     workspaces:
       use: sfdx
-    install:
-      - bash scripts/ci/installDX.sh
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:source:push --forceoverwrite --loglevel fatal --wait 30 --targetusername CI
 
   - stage: Run Tests
     name: Run Unit Tests
     workspaces:
       use: sfdx
-    install: bash scripts/ci/installDX.sh
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:apex:test:run --targetusername CI --testlevel RunLocalTests --codecoverage --resultformat human
 
   - stage: Delete Scratch Org
