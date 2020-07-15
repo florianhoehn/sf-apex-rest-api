@@ -1,9 +1,7 @@
 image:
   file: .gitpod.Dockerfile
-
 tasks:
-  - init: 'bash scripts/initGitpod.sh'
-    command: 'bash scripts/commandGitpod.sh'
+  - command: 'bash scripts/installSFDXAndAutorizeDevhub.sh'
 vscode:
   extensions:
     - aaron-bond.better-comments@2.0.5:WAzJGO7Vb3JPqZ/xhShsZA==
