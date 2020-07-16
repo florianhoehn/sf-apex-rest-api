@@ -52,7 +52,7 @@ public with sharing class ExampleAccountWrapper extends RestResponse {
     * @param Object obj
     */
     private Object convertFields() {
-        Account account = [SELECT Id, Rating FROM Account WHERE Id = :accountId];
+        Account account = new Account(Id = this.accountId);
         account.Rating = this.accountRating;
         return account;
     }
