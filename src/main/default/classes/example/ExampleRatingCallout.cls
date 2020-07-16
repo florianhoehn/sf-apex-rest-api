@@ -22,6 +22,7 @@ public with sharing class ExampleRatingCallout extends RestCallout {
     /**
     * send the account with opportunities to rating engine
     */
+    @SuppressWarnings('PMD.LeverageNamedCredentials')
     public void sendAccountToRatingEngine() {
         RestLogBuilder logBuilder = new RestLogBuilder();
         String requestBody;

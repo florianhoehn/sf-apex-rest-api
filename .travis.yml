@@ -35,9 +35,6 @@ jobs:
     name: Run pmd
     script:
       - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes -R ruleset.xml -f textcolor
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/tests -R ruleset.xml -f textcolor
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example -R ruleset.xml -f textcolor
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example/tests -R ruleset.xml -f textcolor
     workspaces:
       use: pmd
 
