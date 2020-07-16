@@ -1,13 +1,11 @@
 /**
-* RestResponseTest.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: tests RestResponse
+* @author Florian Hoehn
+* tests RestResponse
 **/
 @isTest
 private class RestResponseTest {
     /**
-    * @description tests constructor
+    * tests constructor
     */
     @isTest
     private static void it_should_Instantiate() {
@@ -22,7 +20,7 @@ private class RestResponseTest {
     }
 
     /**
-    * @description tests constructor with object
+    * tests constructor with object
     */
     @isTest
     private static void it_should_InstantiateWithObject() {
@@ -37,7 +35,7 @@ private class RestResponseTest {
     }
 
     /**
-    * @description tests error wrapper constructor
+    * tests error wrapper constructor
     */
     @isTest
     private static void it_should_InstantiateRestError() {
@@ -51,7 +49,7 @@ private class RestResponseTest {
     }
 
     /**
-    * @description tests error wrapper constructor with parameters
+    * tests error wrapper constructor with parameters
     */
     @isTest
     private static void it_should_InstantiateRestErrorWithParameters() {
@@ -68,7 +66,7 @@ private class RestResponseTest {
     }
 
     /**
-    * @description tests to json inherited from RestWrapper
+    * tests to json inherited from RestWrapper
     */
     @isTest
     private static void it_should_ReturnJSON() {
@@ -84,7 +82,7 @@ private class RestResponseTest {
     }
 
     /**
-    * @description tests convert inherited from RestWrapper
+    * tests convert inherited from RestWrapper
     */
     @isTest
     private static void it_should_ConvertToObject() {

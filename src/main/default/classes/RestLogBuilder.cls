@@ -1,39 +1,42 @@
 /**
-* RestLogBuilder.cls
-* Created By: Florian Hoehn
-* Created On: January 16th, 2017
-* Description: defines the log builder to easily build a log record and insert it
+* @author Florian Hoehn
+* defines the log builder to easily build a log record and insert it
 **/
 public with sharing class RestLogBuilder {
     /**
-    * @description Constants used in the log builder
+    * Constants used in the log builder
     */
-    @TestVisible private static final String LOG_LEVEL_ALL = 'All';
-    @TestVisible private static final String LOG_LEVEL_FAILURE = 'Failure';
-    @TestVisible private static final String STATUS_SUCCESS = 'Success';
-    @TestVisible private static final String STATUS_FAILURE = 'Failure';
+    @TestVisible
+    private static final String LOG_LEVEL_ALL = 'All';
+    @TestVisible
+    private static final String LOG_LEVEL_FAILURE = 'Failure';
+    @TestVisible
+    private static final String STATUS_SUCCESS = 'Success';
+    @TestVisible
+    private static final String STATUS_FAILURE = 'Failure';
     private static final Integer TEXT_MAX_NUMBER_CHARS = 255;
     private static final Integer TEXTAREA_MAX_NUMBER_CHARS = 131072;
 
     /**
-    * @description defines log level (create a setting for this)
+    * defines log level (create a setting for this)
     */
-    @TestVisible private String logLevel = LOG_LEVEL_ALL;
+    @TestVisible
+    private String logLevel = LOG_LEVEL_ALL;
 
     /**
-    * @description defines log record that will be inserted or logged out
+    * defines log record that will be inserted or logged out
     */
     private Rest_Log__c log;
 
     /**
-    * @description constructor which leverages the SObjectBuilder to initiate record
+    * constructor which leverages the SObjectBuilder to initiate record
     */
     public RestLogBuilder() {
         this.log = new Rest_Log__c();
     }
 
     /**
-    * @description set endpoint
+    * set endpoint
     * @param String endpoint
     */
     public RestLogBuilder withEndpoint(String endpoint) {
@@ -42,7 +45,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description set requestBody
+    * set requestBody
     * @param String requestBody
     */
     public RestLogBuilder withRequestBody(String requestBody) {
@@ -51,7 +54,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description set responseBody
+    * set responseBody
     * @param String responseBody
     */
     public RestLogBuilder withResponseBody(String responseBody) {
@@ -60,7 +63,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description set Message and StackTrace from exception
+    * set Message and StackTrace from exception
     * @param Exception ex
     */
     public RestLogBuilder withException(Exception ex) {
@@ -70,7 +73,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description set errorCode
+    * set errorCode
     * @param String errorCode
     */
     public RestLogBuilder withErrorCode(String errorCode) {
@@ -79,7 +82,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description insert or log out log record depending on log level
+    * insert or log out log record depending on log level
     */
     public RestLogBuilder insertLog() {
         this.log.Status__c = this.getStatus();
@@ -92,7 +95,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description returns the log record
+    * returns the log record
     * @return Rest_Log__c log
     */
     public Rest_Log__c build() {
@@ -100,7 +103,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description returns the status depending if an errorCode is set or not
+    * returns the status depending if an errorCode is set or not
     * @return String status
     */
     private String getStatus() {
@@ -112,7 +115,7 @@ public with sharing class RestLogBuilder {
     }
 
     /**
-    * @description returns a cleaned up string, not null and length cut
+    * returns a cleaned up string, not null and length cut
     * @param String stringToCleanUp
     * @param Integer stringMaxLength
     * @return String cleanedString

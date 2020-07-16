@@ -1,90 +1,98 @@
 /**
-* RestCallout.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: defines the core functionality of callouts - should be extended for each specific callout
+* @author Florian Hoehn
+* defines the core functionality of callouts - should be extended for each specific callout
 **/
 public with sharing virtual class RestCallout {
     /**
-    * @description defines max timeout
+    * defines max timeout
     */
-    @TestVisible private Integer MAX_TIMEOUT = 120000;
+    @TestVisible
+    private Integer maxTimeout = 120000;
 
     /**
-    * @description defines httpRequest for the callout
+    * defines httpRequest for the callout
     */
-    @TestVisible protected HttpRequest httpRequest;
+    @TestVisible
+    protected HttpRequest httpRequest;
 
     /**
-    * @description constructor, initiates httpRequest and number of tries
+    * constructor, initiates httpRequest and number of tries
     */
     public RestCallout() {
         this.createHttpRequest();
     }
 
     /**
-    * @description sets method
+    * sets method
     * @param String method
     */
-    @TestVisible protected void setMethod(String method) {
+    @TestVisible
+    protected void setMethod(String method) {
         this.httpRequest.setMethod(method);
     }
 
     /**
-    * @description sets endpoint
+    * sets endpoint
     * @param String endpoint
     */
-    @TestVisible protected void setEndpoint(String endpoint) {
+    @TestVisible
+    protected void setEndpoint(String endpoint) {
         this.httpRequest.setEndpoint(endpoint);
     }
 
     /**
-    * @description sets endpoint
+    * sets endpoint
     * @param String namedCredential
     */
-    @TestVisible protected void setNamedCredential(String namedCredential) {
+    @TestVisible
+    protected void setNamedCredential(String namedCredential) {
         this.httpRequest.setEndpoint('callout:' + namedCredential);
     }
 
     /**
-    * @description sets client certificate
+    * sets client certificate
     * @param String certificateName
     */
-    @TestVisible protected void setClientCertificate(String certificateName) {
+    @TestVisible
+    protected void setClientCertificate(String certificateName) {
         this.httpRequest.setClientCertificateName(certificateName);
     }
 
     /**
-    * @description sets timeout
+    * sets timeout
     * @param Integer timeout
     */
-    @TestVisible protected void setTimeout(Integer timeout) {
+    @TestVisible
+    protected void setTimeout(Integer timeout) {
         this.httpRequest.setTimeout(timeout);
     }
 
     /**
-    * @description set header
+    * set header
     * @param String headerName
     * @param String headerValue
     */
-    @TestVisible protected void setHeader(String headerName, String headerValue) {
+    @TestVisible
+    protected void setHeader(String headerName, String headerValue) {
         this.httpRequest.setHeader(headerName, headerValue);
     }
 
 
     /**
-    * @description sets JSON body
+    * sets JSON body
     * @param String requestBody
     */
-    @TestVisible protected void setBody(String requestBody) {
+    @TestVisible
+    protected void setBody(String requestBody) {
         this.httpRequest.setBody(requestBody);
     }
 
     /**
-    * @description do the actual callout
+    * do the actual callout
     * @return String requestBody
     */
-    @TestVisible protected String call() {
+    @TestVisible
+    protected String call() {
         Http http = new Http();
         HttpResponse httpResponse = http.send(this.httpRequest);
         if(httpResponse.getStatusCode() != 200) {
@@ -94,12 +102,12 @@ public with sharing virtual class RestCallout {
     }
 
     /**
-    * @description initialises the httpRequest with all default headers
+    * initialises the httpRequest with all default headers
     * we can move anything that is the same for all callouts in here i.e. endpoint, method, certificate, timeout, content-type
     */
     protected void createHttpRequest() {
         this.httpRequest = new HttpRequest();
-        this.httpRequest.setTimeout(MAX_TIMEOUT);
+        this.httpRequest.setTimeout(maxTimeout);
         this.httpRequest.setHeader('Content-Type', 'application/json');
     }
 }

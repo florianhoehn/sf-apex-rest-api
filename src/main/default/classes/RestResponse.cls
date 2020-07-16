@@ -1,25 +1,23 @@
 /**
-* RestResponse.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: defines the structure of callout responses aligned with SF standard
+* @author Florian Hoehn
+* defines the structure of callout responses aligned with SF standard
 **/
-global with sharing virtual class RestResponse extends RestWrapper{
+public with sharing virtual class RestResponse extends RestWrapper{
     /**
     * @group integration
-    * @description defines the structure of integration errors
+    * defines the structure of integration errors
     */
     public with sharing class RestError {
         public String errorCode { get; set; }
         public String message { get; set; }
 
         /**
-        * @description constructor
+        * empty constructor
         */
         public RestError() {}
 
         /**
-        * @description constructor which leverages the parents constructor
+        * constructor which leverages the parents constructor
         * @param String errorCode
         * @param String message
         */
@@ -33,20 +31,20 @@ global with sharing virtual class RestResponse extends RestWrapper{
     public Boolean success { get; set; }
 
     /**
-    * @description constructor
+    * constructor
     */
     public RestResponse() {
         this.errors = new List<RestError>();
     }
 
     /**
-    * @description constructor which leverages the parents constructor
+    * constructor which leverages the parents constructor
     * @param Object obj
     */
     public RestResponse(Object obj) { super(obj); }
 
     /**
-    * @description overrides the mapFields method to initiate the empty error list
+    * overrides the mapFields method to initiate the empty error list
     * @param Object obj
     */
     private void mapFields(Object obj) {

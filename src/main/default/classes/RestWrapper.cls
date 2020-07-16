@@ -1,18 +1,16 @@
 /**
-* RestWrapper.cls
-* Created By: Florian Hoehn
-* Created On: 09/15/2016
-* Description: defines the core functionality of all wrapper classes
-*              should be extended: mapFields & convertFields needs to be overridden
+* @author Florian Hoehn
+* defines the core functionality of all wrapper classes
+* should be extended: mapFields & convertFields needs to be overridden
 **/
 public with sharing abstract class RestWrapper {
     /**
-    * @description constructor
+    * constructor
     */
     public RestWrapper() {}
 
     /**
-    * @description constructor, calls mapFields method (overridden one if extended)
+    * constructor, calls mapFields method (overridden one if extended)
     * @param Object obj
     */
     public RestWrapper(Object obj) {
@@ -20,7 +18,7 @@ public with sharing abstract class RestWrapper {
     }
 
     /**
-    * @description serializes the wrapper object into json string without nulls
+    * serializes the wrapper object into json string without nulls
     * @return String json
     */
     public String toJSON() {
@@ -28,7 +26,7 @@ public with sharing abstract class RestWrapper {
     }
 
     /**
-    * @description convert method which calls the (overridden) convertFields method
+    * convert method which calls the (overridden) convertFields method
     * @return Object obj
     */
     public Object convert() {
@@ -36,13 +34,13 @@ public with sharing abstract class RestWrapper {
     }
 
     /**
-    * @description mapFields: MUST be overridden by child classes to extend functionality
+    * mapFields: MUST be overridden by child classes to extend functionality
     * @param Object obj
     */
     private abstract void mapFields(Object obj);
 
     /**
-    * @description convertFields: should be overridden by child classes to extend functionality
+    * convertFields: should be overridden by child classes to extend functionality
     * @return Object obj
     */
     private virtual Object convertFields() { return null; }

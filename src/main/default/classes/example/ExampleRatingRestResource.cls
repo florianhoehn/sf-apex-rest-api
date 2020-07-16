@@ -1,14 +1,12 @@
 /**
-* ExampleRatingRestResource.cls
-* Created By: Florian Hoehn
-* Created On: January 19th, 2017
-* Description: defines the endpoints for the example integration
-*.             GET: get account by id : /ratings/account/<accountId>
+* @author Florian Hoehn
+* defines the endpoints for the example integration
+* GET: get account by id : /ratings/account/<accountId>
 **/
 @RestResource(urlMapping='/ratings/account/*')
 global with sharing class ExampleRatingRestResource {
     /**
-    * @description GET to collect all accounts updated this month with their opportunities
+    * GET to collect all accounts updated this month with their opportunities
     * @return String responseBody as JSON (ExampleAccountWrapper)
     * /ratings/account/<accountId>
     */
@@ -42,7 +40,7 @@ global with sharing class ExampleRatingRestResource {
     }
 
     /**
-    * @description PUT to update the rating for an account
+    * PUT to update the rating for an account
     * @param ExampleAccountWrapper requestBody
     * @return String responseBody as JSON (RestResponse)
     */
@@ -51,7 +49,8 @@ global with sharing class ExampleRatingRestResource {
         RestLogBuilder logBuilder = new RestLogBuilder();
         RestResponse response = new RestResponse();
         Account accountToUpdate;
-        String requestBody, responseBody;
+        String requestBody;
+        String responseBody;
         try{
             requestBody = RestContext.request.requestBody.toString();
             ExampleAccountWrapper accountWrapper = (ExampleAccountWrapper)JSON.deserialize(requestBody, ExampleAccountWrapper.class);

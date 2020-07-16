@@ -1,13 +1,11 @@
 /**
-* RestLogBuilderTest.cls
-* Created By: Florian Hoehn
-* Created On: January 16th, 2017
-* Description: tests RestLogBuilder
+* @author Florian Hoehn
+* tests RestLogBuilder
 **/
 @isTest
 private class RestLogBuilderTest {
     /**
-    * @description tests successful log which does not get inserted as the log level is set to failure.
+    * tests successful log which does not get inserted as the log level is set to failure.
     */
     @isTest
     private static void it_should_return_SuccessLogRecord_NotInserted() {
@@ -33,7 +31,7 @@ private class RestLogBuilderTest {
     }
 
     /**
-    * @description tests successful log which does get inserted
+    * tests successful log which does get inserted
     */
     @isTest
     private static void it_should_return_SuccessLogRecord_Inserted() {
@@ -58,7 +56,7 @@ private class RestLogBuilderTest {
     }
 
     /**
-    * @description tests failure log which gets inserted
+    * tests failure log which gets inserted
     */
     @isTest
     private static void it_should_return_FailureLogRecord_Inserted() {
@@ -66,8 +64,8 @@ private class RestLogBuilderTest {
         String expectedRequestBody = 'expected request Body';
         String expectedResponseBody = 'expected request Body';
         String expectedErrorCode = '400';
-        String expectedExceptionText = 'expected exception message';
-        JSONException expecedJsonEx = new JSONException(expectedExceptionText);
+        String expectedexceptionText = 'expected exception message';
+        JSONException expecedJsonEx = new JSONException(expectedexceptionText);
 
         Test.startTest();
             RestLogBuilder logBuilder = new RestLogBuilder();
@@ -86,7 +84,7 @@ private class RestLogBuilderTest {
         System.assertEquals(expectedResponseBody, actualLog.Response_Body__c);
         System.assertEquals(expectedResponseBody, actualLog.Response_Body__c);
         System.assertEquals(expectedErrorCode, actualLog.Error_Code__c);
-        System.assertEquals(expectedExceptionText, actualLog.Message__c);
+        System.assertEquals(expectedexceptionText, actualLog.Message__c);
         System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
     }
 }

@@ -1,5 +1,3 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/florianhoehn/sf-apex-rest-api)
-
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f3b49a10ff0e49428cca7bf5ed25e66d)](https://app.codacy.com/app/florianhoehn/sf-apex-rest-api?utm_source=github.com&utm_medium=referral&utm_content=florianhoehn/sf-apex-rest-api&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/florianhoehn/sf-apex-rest-api.svg?branch=master)](https://travis-ci.org/florianhoehn/sf-apex-rest-api)
 [![Code Climate](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api/badges/gpa.svg)](https://codeclimate.com/github/florianhoehn/sf-apex-rest-api)
@@ -9,11 +7,8 @@
 # sf-apex-rest-api
 sf-apex-rest-api is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST/JSON integrations.
 
-## Getting started
-To get up and running with the code clone the repository and use your IDE or ANT Migration Tool to deploy OR: <a href="https://githubsfdeploy.herokuapp.com?owner=florianhoehn&repo=sf-apex-rest-api">
-  <img alt="Deploy to Salesforce"
-       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
-</a>
+## Getting started & contribute
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/florianhoehn/sf-apex-rest-api)
 
 ## The Core
 ![Architecture](architecture.png)
@@ -74,6 +69,3 @@ For each callout we can create a new class and re-use the RestCallout class from
 Let's look at the ExampleRatingRestResource and ExampleRatingRestResourceTest classes.
 
 Relatively straight forward we have one method per action (POST, PUT, GET), it controls the logging and DML logic and makes full use of Wrapper/JSON magic.
-
-## Contributing
-Please feel free to create code changes and pull requests that can be discussed by the team if you see anything that can be improved!

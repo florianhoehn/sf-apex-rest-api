@@ -1,13 +1,11 @@
 /**
-* RestCalloutTest.cls
-* Created By: Florian Hoehn
-* Created On: January 17th, 2017
-* Description: Test class for RestCallout
+* @author Florian Hoehn
+* tests RestCallout
 **/
 @isTest
 private class RestCalloutTest {
     /**
-    * @description tests httpRequest is initiated on constructing the RestCallout class
+    * tests httpRequest is initiated on constructing the RestCallout class
     */
     @isTest private static void it_should_InstantiateWithDefaultHeaders() {
         Test.startTest();
@@ -19,7 +17,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests setting the method for the httpRequest
+    * tests setting the method for the httpRequest
     */
     @isTest private static void it_should_SetTheMethod() {
         String expectedMethod = 'GET';
@@ -33,7 +31,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests setting the endpoint for the httpRequest
+    * tests setting the endpoint for the httpRequest
     */
     @isTest private static void it_should_SetTheEndpoint() {
         String expectedEndpoint = 'endpoint';
@@ -47,7 +45,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests setting the endpoint via named credential for the httpRequest
+    * tests setting the endpoint via named credential for the httpRequest
     */
     @isTest private static void it_should_SetTheEndpointViaNamedCredential() {
         String expectedEndpoint = 'endpoint';
@@ -61,7 +59,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests setting the client certificate for the httpRequest
+    * tests setting the client certificate for the httpRequest
     */
     /* TODO: replace <certName> with an existing certificate in our org
     @isTest private static void it_should_SetTheClientCertificate() {
@@ -77,7 +75,7 @@ private class RestCalloutTest {
     }*/
 
     /**
-    * @description tests setting the timeout for the httpRequest
+    * tests setting the timeout for the httpRequest
     */
     @isTest private static void it_should_SetTheTimeOut() {
         RestCallout actualRestCallout = new RestCallout();
@@ -92,7 +90,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests setting the header for the httpRequest
+    * tests setting the header for the httpRequest
     */
     @isTest private static void it_should_SetAHeader() {
         String expectedHeaderName = 'headerName';
@@ -108,7 +106,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests setting the body for the httpRequest
+    * tests setting the body for the httpRequest
     */
     @isTest private static void it_should_SetTheBody() {
         String expectedBody = 'body';
@@ -122,7 +120,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests making a successful callout
+    * tests making a successful callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedSuccess() {
         RestCallout actualRestCallout = new RestCallout();
@@ -143,7 +141,7 @@ private class RestCalloutTest {
     }
 
     /**
-    * @description tests making a failed callout
+    * tests making a failed callout
     */
     @isTest private static void it_should_DoACalloutWithReturnedFailure() {
         RestCallout actualRestCallout = new RestCallout();

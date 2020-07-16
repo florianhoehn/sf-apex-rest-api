@@ -1,13 +1,11 @@
 /**
-* ExampleRatingRestResourceTest.cls
-* Created By: Florian Hoehn
-* Created On: January 19th, 2017
-* Description: tests ExampleRatingRestResource
+* @author Florian Hoehn
+* tests ExampleRatingRestResource
 **/
 @isTest
 private class ExampleRatingRestResourceTest {
     /**
-    * @description setup test data for this class
+    * setup test data for this class
     */
     @testSetup
     private static void setupTestData() {
@@ -29,7 +27,7 @@ private class ExampleRatingRestResourceTest {
     }
 
     /**
-    * @description tests get endpoint to get accounts with opportunities
+    * tests get endpoint to get accounts with opportunities
     */
     @isTest
     private static void it_should_GetAccountWithOpportunitiesSuccess() {
@@ -59,7 +57,7 @@ private class ExampleRatingRestResourceTest {
     }
 
     /**
-    * @description tests get endpoint to get accounts with opportunities failure
+    * tests get endpoint to get accounts with opportunities failure
     */
     @isTest
     private static void it_should_GetAccountFailure() {
@@ -89,7 +87,7 @@ private class ExampleRatingRestResourceTest {
     }
 
     /**
-    * @description tests put endpoint to update rating
+    * tests put endpoint to update rating
     */
     @isTest
     private static void it_should_UpdateRating() {
@@ -123,7 +121,7 @@ private class ExampleRatingRestResourceTest {
     }
 
     /**
-    * @description tests put endpoint to update rating failure
+    * tests put endpoint to update rating failure
     */
     @isTest
     private static void it_should_UpdateRatingFailure() {
