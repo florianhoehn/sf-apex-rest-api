@@ -89,7 +89,7 @@ public with sharing class RestLogBuilder {
         if(this.logLevel == LOG_LEVEL_ALL || this.log.Status__c == LOG_LEVEL_FAILURE) {
             insert this.log;
         } else {
-            System.debug('===> Log: ' + this.log);
+            System.debug(LoggingLevel.ERROR, '===> Log: ' + this.log);
         }
         return this;
     }

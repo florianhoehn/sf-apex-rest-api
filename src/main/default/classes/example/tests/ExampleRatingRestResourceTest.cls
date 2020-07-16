@@ -51,7 +51,7 @@ private class ExampleRatingRestResourceTest {
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(true, actualResponse.success, 'Success does not match');
         ExampleAccountWrapperTest.assertAccountMappings(expectedAccount, actualResponse);
-        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c, 'Log Status does not match');
     }
@@ -80,7 +80,7 @@ private class ExampleRatingRestResourceTest {
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(false, actualResponse.success, 'Success does not match');
-        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals('GETACCOUNT', actualLog.Error_Code__c, 'Log Error Code does not match');
         System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c, 'Log Status does not match');
@@ -111,7 +111,7 @@ private class ExampleRatingRestResourceTest {
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(true, actualResponse.success, 'Success does not match');
-        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c, 'Log Status does not match');
         Account actualAccount = [SELECT Rating
@@ -145,7 +145,7 @@ private class ExampleRatingRestResourceTest {
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
         System.assertEquals(false, actualResponse.success, 'Success does not match');
-        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals('PUTACCOUNT', actualLog.Error_Code__c, 'Log Error Code does not match');
         System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c, 'Log Status does not match');

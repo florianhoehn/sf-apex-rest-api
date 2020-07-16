@@ -33,7 +33,8 @@ private class ExampleRatingCalloutTest {
     /**
     * tests making a successful callout
     */
-    @isTest private static void doACalloutWithReturnedRating() {
+    @isTest
+    private static void doACalloutWithReturnedRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -56,15 +57,16 @@ private class ExampleRatingCalloutTest {
 
         Account actualAccount = [SELECT Id, Rating FROM Account WHERE Id = :expectedAccount.Id];
         System.assertEquals(expectedRating, actualAccount.Rating, 'Account Rating does not match');
-        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
-        System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
+        Rest_Log__c actualLog = [SELECT Id, Status__c FROM Rest_Log__c];
+        System.assertNotEquals(null, actualLog, 'Log is not set');
         System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c, 'Log Status does not match');
     }
 
     /**
     * tests making a successful callout via the invoker (process builder)
     */
-    @isTest private static void doACalloutByInvokerWithReturnedRating() {
+    @isTest
+    private static void doACalloutByInvokerWithReturnedRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -86,7 +88,7 @@ private class ExampleRatingCalloutTest {
 
         Account actualAccount = [SELECT Id, Rating FROM Account WHERE Id = :expectedAccount.Id];
         System.assertEquals(expectedRating, actualAccount.Rating, 'Account Rating doesnot match');
-        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c, 'Log Status does not match');
     }
@@ -94,7 +96,8 @@ private class ExampleRatingCalloutTest {
     /**
     * tests making a failed callout
     */
-    @isTest private static void doACalloutWithErrorReturned() {
+    @isTest
+    private static void doACalloutWithErrorReturned() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -116,7 +119,7 @@ private class ExampleRatingCalloutTest {
             actualRestCallout.sendAccountToRatingEngine();
         Test.stopTest();
 
-        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals(expectedErrorCode, actualLog.Error_Code__c, 'Log Error Code does not match');
         System.assertEquals(expectedMessage, actualLog.Message__c, 'Log Message does not match');
@@ -126,7 +129,8 @@ private class ExampleRatingCalloutTest {
     /**
     * tests making a failed callout without error message being sent by endpoint
     */
-    @isTest private static void doACalloutWithStandardErrorReturned() {
+    @isTest
+    private static void doACalloutWithStandardErrorReturned() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -144,7 +148,7 @@ private class ExampleRatingCalloutTest {
             actualRestCallout.sendAccountToRatingEngine();
         Test.stopTest();
 
-        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
+        Rest_Log__c actualLog = [SELECT Id, Status__c, Error_Code__c, Message__c FROM Rest_Log__c];
         System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
         System.assertEquals(ExampleRatingCallout.exceptionText, actualLog.Error_Code__c, 'Log Error Code does not match');
         System.assertEquals(ExampleRatingCallout.exceptionText, actualLog.Message__c, 'Log Message does not match');
