@@ -1,4 +1,4 @@
-os: xenail
+os: linux
 fast_finish: true
 fail_fast: true
 sudo: required
