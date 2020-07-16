@@ -70,5 +70,5 @@ jobs:
     name: Delete Scratch Org
     workspaces:
       use: sfdx
-    install: bash scripts/ci/installDX.sh
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: bash scripts/dx/deleteScratchOrg.sh CI
