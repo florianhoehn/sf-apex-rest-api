@@ -22,13 +22,14 @@ public class ExampleOpportunityWrapperTest {
     * tests opportunity sObject to opportunity wrapper mapping
     */
     @isTest
-    private static void it_should_MapOpportunityToWrapper() {
+    private static void mapOpportunityToWrapper() {
         Opportunity expectedOpportunity = [SELECT Id, Name, StageName, Amount FROM Opportunity LIMIT 1];
 
         Test.startTest();
             ExampleOpportunityWrapper actualExampleOpportunityWrapper = new ExampleOpportunityWrapper(expectedOpportunity);
         Test.stopTest();
 
+        System.assertEquals(expectedOpportunity.Id, actualExampleOpportunityWrapper.opportunityId, 'Opportunity Id does not match');
         assertOpportunityMappings(expectedOpportunity, actualExampleOpportunityWrapper);
     }
 
@@ -37,10 +38,11 @@ public class ExampleOpportunityWrapperTest {
     * @param Opportunity Opportunity
     * @param ExampleOpportunityWrapper wrapper
     */
-    public static void assertOpportunityMappings(Opportunity Opportunity, ExampleOpportunityWrapper wrapper) {
-        System.assertEquals(Opportunity.Id, wrapper.opportunityId);
-        System.assertEquals(Opportunity.Name, wrapper.opportunityName);
-        System.assertEquals(Opportunity.StageName, wrapper.opportunityStage);
-        System.assertEquals(Integer.valueOf(Opportunity.Amount), wrapper.opportunityAmount);
+    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
+    public static void assertOpportunityMappings(Opportunity opportunity, ExampleOpportunityWrapper wrapper) {
+        System.assertEquals(opportunity.Id, wrapper.opportunityId, 'Opportunity Id does not match');
+        System.assertEquals(opportunity.Name, wrapper.opportunityName, 'Opportunity Name does not match');
+        System.assertEquals(opportunity.StageName, wrapper.opportunityStage, 'Opportunity Stage does not match');
+        System.assertEquals(Integer.valueOf(opportunity.Amount), wrapper.opportunityAmount, 'Opportunity Amount does not match');
     }
 }

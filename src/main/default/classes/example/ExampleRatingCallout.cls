@@ -24,7 +24,9 @@ public with sharing class ExampleRatingCallout extends RestCallout {
     */
     public void sendAccountToRatingEngine() {
         RestLogBuilder logBuilder = new RestLogBuilder();
-        String requestBody, responseBody, errorCode;
+        String requestBody;
+        String responseBody;
+        String errorCode;
         try {
             ExampleAccountWrapper wrapper = new ExampleAccountWrapper(this.account);
             this.setMethod('POST');

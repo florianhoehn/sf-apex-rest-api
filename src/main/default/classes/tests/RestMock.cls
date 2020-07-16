@@ -31,6 +31,7 @@ public class RestMock implements HttpCalloutMock {
     * @param String body
     * @param Map<String, String> responseHeaders
     */
+    @SuppressWarnings('PMD.ExcessiveParameterList')
     public RestMock(Integer code, String status, String body, Map<String, String> responseHeaders) {
         this.code = code;
         this.status = status;

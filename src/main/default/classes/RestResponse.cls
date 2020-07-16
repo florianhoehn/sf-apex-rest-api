@@ -14,6 +14,7 @@ public with sharing virtual class RestResponse extends RestWrapper{
         /**
         * empty constructor
         */
+        @SuppressWarnings('PMD.EmptyStatementBlock')
         public RestError() {}
 
         /**
