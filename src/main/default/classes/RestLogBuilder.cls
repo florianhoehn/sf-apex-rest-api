@@ -87,7 +87,7 @@ public with sharing class RestLogBuilder {
     public RestLogBuilder insertLog() {
         this.log.Status__c = this.getStatus();
         if(this.logLevel == LOG_LEVEL_ALL || this.log.Status__c == LOG_LEVEL_FAILURE) {
-            SObjectAccessDecision decision = Security.stripInaccessible(AccessType.CREATABLE, this.log);
+            SObjectAccessDecision decision = Security.stripInaccessible(AccessType.CREATABLE, new List<SObject>{this.log});
             System.debug(LoggingLevel.INFO, decision.getRemovedFields());
             insert this.log;
         } else {
