@@ -1,9 +1,8 @@
 os: linux
-fast_finish: true
-fail_fast: true
 sudo: required
-addons:
-  chrome: stable
+language: node_js
+node_js:
+- "0.10"
 
 branches:
   only:
