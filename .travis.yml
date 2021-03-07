@@ -1,7 +1,7 @@
 os: linux
 sudo: required
 language: node_js
-node_js: "12"
+node_js: 12
 
 branches:
   only: 
@@ -42,19 +42,19 @@ jobs:
     name: Push Metadata
     workspaces:
       use: sfdx
-      install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:source:push --forceoverwrite --loglevel fatal --wait 30 --targetusername CI
 
   - stage: Run Tests
     name: Run Unit Tests
     workspaces:
       use: sfdx
-      install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:apex:test:run --targetusername CI --testlevel RunLocalTests --codecoverage --resultformat human
 
   - stage: Delete Scratch Org
     name: Delete Scratch Org
     workspaces:
       use: sfdx
-      install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: bash scripts/dx/deleteScratchOrg.sh CI
