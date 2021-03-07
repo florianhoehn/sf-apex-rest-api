@@ -1,11 +1,20 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f3b49a10ff0e49428cca7bf5ed25e66d)](https://app.codacy.com/app/florianhoehn/sf-apex-rest-api?utm_source=github.com&utm_medium=referral&utm_content=florianhoehn/sf-apex-rest-api&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/florianhoehn/sf-apex-rest-api.svg?branch=master)](https://travis-ci.org/florianhoehn/sf-apex-rest-api)
 
 # sf-apex-rest-api
 sf-apex-rest-api is a starter kit to for REST/JSON integrations on the Force.com platform. Its goal is to create easily readable and maintainable incoming and outgoing REST/JSON integrations.
 
 ## Getting started & contribute
+### Add Gitpod Environment Variables
+`DEVHUBCONSUMERKEY`, `DEVHUBKEY` and `DEVHUBUSERNAME` to authenticate with your devhub and install sfdx on opening the gitpod workspace.
+- every line break in the `DEVHUBKEY` gets replaced by `||n||`
+
+### Open Gitpod Workspace
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/florianhoehn/sf-apex-rest-api)
+
+### Create a scratch org and push it all in in one go:
+```
+bash scripts/dx/createScratchOrg.sh <alias> <duration>
+```
 
 ## The Core
 ![Architecture](architecture.png)
