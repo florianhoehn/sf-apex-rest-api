@@ -7,6 +7,7 @@ public with sharing abstract class RestWrapper {
     /**
     * constructor
     */
+    @SuppressWarnings('PMD.EmptyStatementBlock')
     public RestWrapper() {}
 
     /**

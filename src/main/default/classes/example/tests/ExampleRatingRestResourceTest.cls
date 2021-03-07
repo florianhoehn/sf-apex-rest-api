@@ -30,7 +30,7 @@ private class ExampleRatingRestResourceTest {
     * tests get endpoint to get accounts with opportunities
     */
     @isTest
-    private static void it_should_GetAccountWithOpportunitiesSuccess() {
+    private static void getAccountWithOpportunitiesSuccess() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -49,18 +49,18 @@ private class ExampleRatingRestResourceTest {
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
-        System.assertEquals(true, actualResponse.success);
+        System.assertEquals(true, actualResponse.success, 'Success does not match');
         ExampleAccountWrapperTest.assertAccountMappings(expectedAccount, actualResponse);
-        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
-        System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c);
+        Rest_Log__c actualLog = [SELECT Id, Status__c FROM Rest_Log__c];
+        System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
+        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c, 'Log Status does not match');
     }
 
     /**
     * tests get endpoint to get accounts with opportunities failure
     */
     @isTest
-    private static void it_should_GetAccountFailure() {
+    private static void getAccountFailure() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -79,18 +79,18 @@ private class ExampleRatingRestResourceTest {
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
-        System.assertEquals(false, actualResponse.success);
-        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
-        System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals('GETACCOUNT', actualLog.Error_Code__c);
-        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
+        System.assertEquals(false, actualResponse.success, 'Success does not match');
+        Rest_Log__c actualLog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
+        System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
+        System.assertEquals('GETACCOUNT', actualLog.Error_Code__c, 'Log Error Code does not match');
+        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c, 'Log Status does not match');
     }
 
     /**
     * tests put endpoint to update rating
     */
     @isTest
-    private static void it_should_UpdateRating() {
+    private static void updateRating() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -110,21 +110,21 @@ private class ExampleRatingRestResourceTest {
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
-        System.assertEquals(true, actualResponse.success);
-        Rest_Log__c actuallog = [SELECT Id, Status__c FROM Rest_Log__c];
-        System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c);
+        System.assertEquals(true, actualResponse.success, 'Success does not match');
+        Rest_Log__c actualLog = [SELECT Id, Status__c FROM Rest_Log__c];
+        System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
+        System.assertEquals(RestLogBuilder.STATUS_SUCCESS, actualLog.Status__c, 'Log Status does not match');
         Account actualAccount = [SELECT Rating
                                    FROM Account
                                   WHERE Id = :expectedAccount.Id];
-        System.assertEquals(expectedRating, actualAccount.Rating);
+        System.assertEquals(expectedRating, actualAccount.Rating, 'Account Rating does not match');
     }
 
     /**
     * tests put endpoint to update rating failure
     */
     @isTest
-    private static void it_should_UpdateRatingFailure() {
+    private static void updateRatingFailure() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -144,11 +144,11 @@ private class ExampleRatingRestResourceTest {
 
         String actualJSONResponse = RestContext.response.responseBody.toString();
         ExampleAccountWrapper actualResponse = (ExampleAccountWrapper)System.JSON.deserialize(actualJSONResponse, ExampleAccountWrapper.class);
-        System.assertEquals(false, actualResponse.success);
-        Rest_Log__c actuallog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
-        System.assertNotEquals(null, actualLog.Id);
-        System.assertEquals('PUTACCOUNT', actualLog.Error_Code__c);
-        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c);
+        System.assertEquals(false, actualResponse.success, 'Success does not match');
+        Rest_Log__c actualLog = [SELECT Id, Status__c, Error_Code__c FROM Rest_Log__c];
+        System.assertNotEquals(null, actualLog.Id, 'Log Id does match');
+        System.assertEquals('PUTACCOUNT', actualLog.Error_Code__c, 'Log Error Code does not match');
+        System.assertEquals(RestLogBuilder.STATUS_FAILURE, actualLog.Status__c, 'Log Status does not match');
     }
 
 }

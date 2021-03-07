@@ -1,47 +1,33 @@
-os: xenail
-fast_finish: true
-fail_fast: true
+os: linux
 sudo: required
-addons:
-  chrome: stable
+language: node_js
+node_js: 12
 
 branches:
-  only:
-    - master
+  only: 
+  - master
 
 stages:
-  - name: Install Tools
   - name: Execute Static Code Analysis
-  - name: Create Orgs
+  - name: Create Org
   - name: Push
   - name: Run Tests
   - name: Delete Scratch Org
 
 jobs:
-  fast_finish: true
   include:
-  - stage: Install Tools
-    name: Install PMD
-    workspaces:
-      create:
-        name: pmd
-        paths:
-          - pmd-bin-6.16.0
-    script:
-      - wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.16.0/pmd-bin-6.16.0.zip
-      - unzip -o pmd-bin-6.16.0.zip
-
   - stage: Execute Static Code Analysis
     name: Run pmd
+    install:
+      - wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.16.0/pmd-bin-6.16.0.zip
+      - unzip -o pmd-bin-6.16.0.zip
     script:
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes -R ruleset.xml -f textcolor || true
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/tests -R ruleset.xml -f textcolor || true
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example -R ruleset.xml -f textcolor || true
-      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example/tests -R ruleset.xml -f textcolor || true
-    workspaces:
-      use: pmd
+      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes -R ruleset.xml -f textcolor
+      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/tests -R ruleset.xml -f textcolor
+      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example -R ruleset.xml -f textcolor
+      - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example/tests -R ruleset.xml -f textcolor
 
-  - stage: Create Orgs
+  - stage: Create Org
     name: Install SFDX, Connect DEVHUB, Create Scratch Org
     workspaces:
       create:

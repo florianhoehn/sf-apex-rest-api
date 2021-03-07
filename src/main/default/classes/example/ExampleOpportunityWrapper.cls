@@ -23,9 +23,9 @@ public with sharing class ExampleOpportunityWrapper extends RestWrapper {
     */
     private void mapFields(Object obj) {
         Opportunity opportunity = (Opportunity)obj;
-        this.opportunityId = Opportunity.Id;
-        this.opportunityName = Opportunity.Name;
-        this.opportunityStage = Opportunity.StageName;
-        this.opportunityAmount = Integer.valueOf(Opportunity.Amount);
+        this.opportunityId = opportunity.Id;
+        this.opportunityName = opportunity.Name;
+        this.opportunityStage = opportunity.StageName;
+        this.opportunityAmount = Integer.valueOf(opportunity.Amount);
     }
 }

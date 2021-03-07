@@ -30,7 +30,7 @@ public class ExampleAccountWrapperTest {
     * tests account sObject to account wrapper mapping for callout
     */
     @isTest
-    private static void it_should_MapAccountToWrapper() {
+    private static void mapAccountToWrapper() {
         Account expectedAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating,
                                           (SELECT Id, Name, Amount, StageName FROM Opportunities)
                                      FROM Account
@@ -40,6 +40,7 @@ public class ExampleAccountWrapperTest {
             ExampleAccountWrapper actualExampleAccountWrapper = new ExampleAccountWrapper(expectedAccount);
         Test.stopTest();
 
+        System.assertEquals(expectedAccount.Id, actualExampleAccountWrapper.accountId, 'Account Id does not match');
         assertAccountMappings(expectedAccount, actualExampleAccountWrapper);
     }
 
@@ -47,7 +48,7 @@ public class ExampleAccountWrapperTest {
     * tests account wrapper to account sObject conversion for callout response
     */
     @isTest
-    private static void it_should_ConvertWrapperToAccount() {
+    private static void convertWrapperToAccount() {
         Account testAccount = [SELECT Id, Name, Type, AnnualRevenue, Rating FROM Account LIMIT 1];
         ExampleAccountWrapper expectedExampleAccountWrapper = createExampleAccountWrapper(testAccount.Id);
 
@@ -55,6 +56,7 @@ public class ExampleAccountWrapperTest {
             Account actualUpdatedAccount = (Account)expectedExampleAccountWrapper.convert();
         Test.stopTest();
 
+        System.assertEquals(actualUpdatedAccount.Id, expectedExampleAccountWrapper.accountId, 'Account Id does not match');
         assertAccountMappings(actualUpdatedAccount, expectedExampleAccountWrapper);
     }
 
@@ -75,14 +77,15 @@ public class ExampleAccountWrapperTest {
     * @param Account account
     * @param ExampleAccountWrapper wrapper
     */
+    @SuppressWarnings('PMD.ApexUnitTestMethodShouldHaveIsTestAnnotation')
     public static void assertAccountMappings(Account account, ExampleAccountWrapper wrapper) {
-        System.assertEquals(account.Id, wrapper.accountId);
-        System.assertEquals(account.Name, wrapper.accountName);
-        System.assertEquals(account.Type, wrapper.accountType);
+        System.assertEquals(account.Id, wrapper.accountId, 'Account Id does not match');
+        System.assertEquals(account.Name, wrapper.accountName, 'Account Name does not match');
+        System.assertEquals(account.Type, wrapper.accountType, 'Account Type does not match');
         if(wrapper.isBigPlayer != null) {
-            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper.BIGPLAYERLINE, wrapper.isBigPlayer);
+            System.assertEquals(account.AnnualRevenue > ExampleAccountWrapper.BIGPLAYERLINE, wrapper.isBigPlayer, 'Account isBigPlayer does not match');
         }
-        System.assertEquals(account.Rating, wrapper.accountRating);
+        System.assertEquals(account.Rating, wrapper.accountRating, 'Account Rating does not match');
         for(Integer counter = 0; counter < account.Opportunities.size(); counter++) {
             ExampleOpportunityWrapperTest.assertOpportunityMappings(account.Opportunities.get(counter), wrapper.opportunities.get(counter));
         }

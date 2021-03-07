@@ -13,3 +13,4 @@ vscode:
     - salesforce.salesforcedx-vscode-core@48.24.0:bMdKEv1Qx1glD47vLU+bhw==
     - salesforce.salesforcedx-vscode-lightning@48.24.0:DsygM2X6+jJMcfnXdDJ8NQ==
     - salesforce.salesforcedx-vscode-lwc@48.24.0:WDKUhDh3JVYx2nv64qp3Kg==
+    - dbaeumer.vscode-eslint@2.1.3:1NRvj3UKNTNwmYjptmUmIw==
