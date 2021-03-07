@@ -4,13 +4,13 @@ tasks:
   - command: 'bash scripts/installSFDXAndAutorizeDevhub.sh'
 vscode:
   extensions:
-    - aaron-bond.better-comments@2.0.5:WAzJGO7Vb3JPqZ/xhShsZA==
-    - salesforce.salesforcedx-vscode-apex-replay-debugger@48.24.0:R5VhDe48TNGsOsovPcYRMQ==
-    - salesforce.salesforcedx-vscode-apex-debugger@48.24.0:BVUyqSEcsiBc2pSWAasT6w==
-    - salesforce.salesforcedx-vscode-visualforce@48.24.0:Pk1RPVtCU2yI3iW+58hrKA==
-    - chuckjonas.apex-pmd@0.5.0:YRBcYKweqwBonvFyJfYdEA==
-    - salesforce.salesforcedx-vscode-apex@48.24.0:utD8wMq0gT6YKufcGIgcdA==
-    - salesforce.salesforcedx-vscode-core@48.24.0:bMdKEv1Qx1glD47vLU+bhw==
-    - salesforce.salesforcedx-vscode-lightning@48.24.0:DsygM2X6+jJMcfnXdDJ8NQ==
-    - salesforce.salesforcedx-vscode-lwc@48.24.0:WDKUhDh3JVYx2nv64qp3Kg==
-    - dbaeumer.vscode-eslint@2.1.3:1NRvj3UKNTNwmYjptmUmIw==
+    - dbaeumer.vscode-eslint@2.1.14:YDCg1YnVJIMuZM40rzK8PA==
+    - chuckjonas.apex-pmd@0.5.3:6tkJLus49Nj2xG0DjHTYug==
+    - salesforce.salesforcedx-vscode-core@51.3.0:jN1YWc6JpjkKDJdeWeJDig==
+    - salesforce.salesforcedx-vscode-apex@51.3.0:8G5K8Tg/jUOmd+9xW5ksTA==
+    - salesforce.salesforcedx-vscode-apex-debugger@51.3.0:hpUpbTqgeKzsF3ZPFEWOIA==
+    - salesforce.salesforcedx-vscode-visualforce@51.3.0:EXDFwLo7STpwoeesQyQUMg==
+    - salesforce.salesforcedx-vscode-lightning@51.3.0:fdSn9WvdUNNKKrVvjFplBQ==
+    - salesforce.salesforcedx-vscode-apex-replay-debugger@51.3.0:4kpWb/glvjuQVih9eFmtlA==
+    - salesforce.salesforce-vscode-slds@1.4.2:RBeVAaJc5y2TS6at+hksTQ==
+    - salesforce.salesforcedx-vscode-lwc@51.3.0:0BT/sKl3OkyOfcPtEYVgAw==
