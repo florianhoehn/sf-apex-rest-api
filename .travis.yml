@@ -1,7 +1,7 @@
 os: linux
 sudo: required
 language: node_js
-node_js: 12
+node_js: "12"
 
 branches:
   only: 
@@ -28,21 +28,33 @@ jobs:
       - ./pmd-bin-6.16.0/bin/run.sh pmd -d src/main/default/classes/example/tests -R ruleset.xml -f textcolor
 
   - stage: Create Org
-    name: Create Scratch Org
+    name: Install SFDX, Connect DEVHUB, Create Scratch Org
+    workspaces:
+      create:
+        name: sfdx
+        paths:
+          - sfdx
+          - $HOME/.sfdx
     install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:org:create --definitionfile config/project-scratch-def.json --setalias CI --setdefaultusername --durationdays 1 --targetdevhubusername DEVHUB
 
   - stage: Push
     name: Push Metadata
-    install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    workspaces:
+      use: sfdx
+      install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:source:push --forceoverwrite --loglevel fatal --wait 30 --targetusername CI
 
   - stage: Run Tests
     name: Run Unit Tests
-    install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    workspaces:
+      use: sfdx
+      install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: sfdx force:apex:test:run --targetusername CI --testlevel RunLocalTests --codecoverage --resultformat human
 
   - stage: Delete Scratch Org
     name: Delete Scratch Org
-    install: bash scripts/installSFDXAndAutorizeDevhub.sh
+    workspaces:
+      use: sfdx
+      install: bash scripts/installSFDXAndAutorizeDevhub.sh
     script: bash scripts/dx/deleteScratchOrg.sh CI
