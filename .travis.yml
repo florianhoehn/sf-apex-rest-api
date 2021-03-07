@@ -1,8 +1,5 @@
 os: linux
 sudo: required
-language: node_js
-node_js:
-- "0.10"
 
 branches:
   only:
@@ -17,7 +14,6 @@ stages:
   - name: Delete Scratch Org
 
 jobs:
-  fast_finish: true
   include:
   - stage: Install Tools
     name: Install PMD

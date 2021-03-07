@@ -2,5 +2,5 @@
 
 echo "$DEVHUBKEY" > config/devhub-server.key
 sed -i "s/||n||/\n/gi" config/devhub-server.key
-npm install sfdx-cli --global
+yarn && yarn global add sfdx-cli
 bash scripts/dx/authorizeDevhub.sh
