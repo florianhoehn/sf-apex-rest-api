@@ -1,4 +1,5 @@
 .sfdx/
+config/devhub-server.key
 
 src/main/default/profiles/
 .yarn-integrity
